@@ -21,12 +21,13 @@
 					p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
 			</list>
 		</property>
-		<property name="defaultViews">
-			<list>
-				<bean
-					class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
-			</list>
-		</property>
+
+		<!--<property name="defaultViews">-->
+			<!--<list>-->
+				<!--<bean-->
+					<!--class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />-->
+			<!--</list>-->
+		<!--</property>-->
 	</bean>
 
 	<import resource="classpath:/WEB-INF/controllers.xml" />

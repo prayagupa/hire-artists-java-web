@@ -7,11 +7,14 @@ import com.zcode.springrestserver.client.model.UserModel;
 import com.zcode.springrestserver.client.model.mapper.UserMapper;
 import com.zcode.springrestserver.web.api.IUserAPI;
 import com.zcode.springrestserver.web.service.IUserService;
+import org.springframework.stereotype.Service;
 
 /**
  * @author prayag
  * 
  */
+
+@Service
 public class UserService implements IUserService {
 
 	// @Autowired

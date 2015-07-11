@@ -11,7 +11,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jetty.version>6.1.4</jetty.version>
-		<spring.version>3.0.5.RELEASE</spring.version>
+		<spring.version>4.1.7.RELEASE</spring.version>
 		<slf4j.version>1.6.1</slf4j.version>
 		<java.version>1.6</java.version>
 		<junit.version>4.8.2</junit.version>
@@ -405,7 +405,7 @@
 	</pluginRepositories>
 
 	<build>
-		<finalName>SpringRESTServer</finalName>
+		<finalName>hire-artists</finalName>
 		<plugins>
 
 			<!-- Facilitates downloading source and javadoc in Eclipse -->

@@ -6,6 +6,7 @@ package com.zcode.springrestserver.web.controller;
 import java.util.Map;
 
 import org.apache.commons.collections.map.HashedMap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,8 +22,13 @@ import com.zcode.springrestserver.web.service.IUserService;
  */
 @Controller
 public class PersistenceController {
+	@Autowired
 	IUserService userService;
-	private final UserRepository userRepository;
+
+	@Autowired
+	UserRepository userRepository;
+
+	public PersistenceController(){}
 
 	public PersistenceController(IUserService userService, UserRepository userRepository) {
 		this.userService = userService;

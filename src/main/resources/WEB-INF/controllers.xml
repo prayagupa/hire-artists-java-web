@@ -12,15 +12,15 @@
 
 	<mvc:annotation-driven />
 	
-	<bean class="com.zcode.springrestserver.web.controller.BootController">
-		<constructor-arg ref="userService"></constructor-arg>		
-	</bean>
+	<!--<bean class="com.zcode.springrestserver.web.controller.ArtistController">-->
+		<!--<constructor-arg ref="userService"/>-->
+	<!--</bean>-->
 	
-	<bean class="com.zcode.springrestserver.web.controller.PersistenceController">
-		<constructor-arg ref="userService"></constructor-arg>
-		<constructor-arg ref="userRepository"/>		
-	</bean>
+	<!--<bean class="com.zcode.springrestserver.web.controller.PersistenceController">-->
+		<!--<constructor-arg ref="userService"></constructor-arg>-->
+		<!--<constructor-arg ref="userRepository"/>		-->
+	<!--</bean>-->
 	
-	<!-- <context:component-scan base-package="com.zcode.springrestserver.web.controller"></context:component-scan> -->
+	 <context:component-scan base-package="com.zcode.springrestserver.web.controller"/>
 
 </beans>
