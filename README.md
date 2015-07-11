@@ -1,16 +1,16 @@
-spring-rest-server
+hire-artists-web
 ==================
 
 The project is created using `maven-archetype-webapp`.
 
 ```
 
-|                   |                          |
-|                   |                          |
-|    controller     |      Service             |
-|                   |                          |
-|                   |                          |
-|                   |                          |
+|                    |                   |                          |                              |
+|                    |                   |                          |      Domain/                 |
+|      view          |    controller     |      Service             |      Repository              |
+|                    |                   |                          |                              |
+|                    |                   |                          |                              |
+|                    |                   |                          |                              |
 
 ```
 
