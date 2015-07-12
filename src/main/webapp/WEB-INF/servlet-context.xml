@@ -30,5 +30,5 @@
 		<!--</property>-->
 	</bean>
 
-	<import resource="classpath:/WEB-INF/controllers.xml" />
+	<import resource="classpath:/WEB-INF/layers-context.xml" />
 </beans>

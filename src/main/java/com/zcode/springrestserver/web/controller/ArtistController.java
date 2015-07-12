@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @author prayag
  * 
  */
+
 @Controller
 public class ArtistController {
 

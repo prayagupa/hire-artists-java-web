@@ -7,10 +7,6 @@
 	
 	<import resource="classpath:/WEB-INF/jpa-context.xml" />	
 	<import resource="classpath:/WEB-INF/repository-context.xml" />
-	<import resource="classpath:/WEB-INF/api-context.xml" />
-	<import resource="classpath:/WEB-INF/service-context.xml" />
-	
-	
 
 	<bean id="placeholderConfig"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
