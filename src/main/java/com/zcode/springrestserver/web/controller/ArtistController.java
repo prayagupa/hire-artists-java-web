@@ -3,8 +3,11 @@
  */
 package com.zcode.springrestserver.web.controller;
 
+import com.zcode.springrestserver.web.domain.Artist;
+import com.zcode.springrestserver.web.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +26,9 @@ public class ArtistController {
 	@Autowired
 	IUserService userService;
 
+	@Autowired
+	ArtistService artistService;
+
 	public ArtistController(){}
 	public ArtistController(IUserService userService) {
 		this.userService = userService;
@@ -39,9 +45,19 @@ public class ArtistController {
 	// return "home";
 	// }
 
+	@RequestMapping(value = "/artist/add", method = RequestMethod.GET, headers = "Accept=*/*")
+	public ModelAndView add(/*@RequestBody Artist artist*/){
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET, headers = "Accept=*/*")
-	public ModelAndView add(){
+		Artist artist = new Artist();
+		artist.setDisplayName("Pink Floyd");
+		artistService.save(artist);
+		ModelAndView modelAndView = new ModelAndView("artist/list");
+		modelAndView.addObject("artists", artist.getDisplayName());
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/artist/list", method = RequestMethod.GET, headers = "Accept=*/*")
+	public ModelAndView list(){
 		ModelAndView modelAndView = new ModelAndView("artist/list");
 		modelAndView.addObject("artists", "Porcupine Tree");
 		return modelAndView;

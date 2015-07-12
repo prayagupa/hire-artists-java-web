@@ -1,6 +1,11 @@
 hire-artists-web
 ==================
 
+Technologies 
+------------
+
+maven, https://maven.apache.org/download.cgi
+
 The project is created using `maven-archetype-webapp`.
 
 ```
