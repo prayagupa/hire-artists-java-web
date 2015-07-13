@@ -1,9 +1,6 @@
 package com.hireartists.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -18,7 +15,16 @@ public class EventOrganiser extends AbstractEntity<Long>{
 
     private String name;
 
-    @OneToMany(mappedBy = "organiser", fetch = FetchType.LAZY)
+    private String email;
+
+    private String contactNumber;
+
+    private String address;
+
+    @OneToOne
+    private User user;
+
+    @OneToMany(mappedBy = "eventOrganiser", fetch = FetchType.LAZY)
     private List<Event> events;
 
     public String getName() {
@@ -27,6 +33,38 @@ public class EventOrganiser extends AbstractEntity<Long>{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Event> getEvents() {

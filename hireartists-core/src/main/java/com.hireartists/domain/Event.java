@@ -18,7 +18,7 @@ public class Event extends AbstractEntity<Long> {
     private Date to;
 
     @ManyToOne
-    private EventOrganiser organiser;
+    private EventOrganiser eventOrganiser;
 
     @ManyToMany(mappedBy = "events", fetch = FetchType.LAZY)
     public List<Artist> artists;
@@ -47,12 +47,12 @@ public class Event extends AbstractEntity<Long> {
         this.to = to;
     }
 
-    public EventOrganiser getOrganiser() {
-        return organiser;
+    public EventOrganiser getEventOrganiser() {
+        return eventOrganiser;
     }
 
-    public void setOrganiser(EventOrganiser organiser) {
-        this.organiser = organiser;
+    public void setEventOrganiser(EventOrganiser eventOrganiser) {
+        this.eventOrganiser = eventOrganiser;
     }
 
     public List<Artist> getArtists() {

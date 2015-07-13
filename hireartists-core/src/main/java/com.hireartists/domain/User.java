@@ -11,7 +11,6 @@ import javax.persistence.Entity;
  */
 @Entity
 public class User extends AbstractEntity<Long> {
-	private String fullName;
 
 	private String userName;
 
@@ -22,14 +21,6 @@ public class User extends AbstractEntity<Long> {
 	private boolean deleted;
 
 	private boolean disabled;
-
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String name) {
-		this.fullName = name;
-	}
 
 	public String getUserName() {
 		return userName;
