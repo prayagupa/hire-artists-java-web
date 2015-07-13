@@ -22,7 +22,7 @@
 			</list>
 		</property>
 
-		<!--<property name="defaultViews">-->
+		<!--<property displayName="defaultViews">-->
 			<!--<list>-->
 				<!--<bean-->
 					<!--class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />-->

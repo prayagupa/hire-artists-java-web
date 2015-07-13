@@ -7,7 +7,7 @@ import com.hireartists.client.model.UserModel;
 import com.hireartists.client.model.mapper.UserMapper;
 import com.hireartists.domain.User;
 import com.hireartists.web.repository.UserRepository;
-import com.hireartists.web.service.IUserService;
+import com.hireartists.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +17,12 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class UserService implements IUserService {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserRepository userRepository;
 
-	public UserService(){}
+	public UserServiceImpl(){}
 
 	/**
 	 * 
@@ -33,7 +33,7 @@ public class UserService implements IUserService {
 	@Override
 	public UserModel login(String userName, String password) {
 		User user = new User();
-		user.setFullName("Prayag");
+		user.setUserName("Prayag");
 		return UserMapper.mapUser(user);
 	}
 }

@@ -34,9 +34,9 @@
  
   </appender>
  
-  <!-- <logger name="org.hibernate.type" level="ALL" />
-  <logger name="org.hibernate" level="DEBUG" />
-  <logger name="org.springframework" level="DEBUG" /> -->
+  <!-- <logger displayName="org.hibernate.type" level="ALL" />
+  <logger displayName="org.hibernate" level="DEBUG" />
+  <logger displayName="org.springframework" level="DEBUG" /> -->
   <logger name="org.springframework.data" level="DEBUG" />
   <logger name="org.springframework.security" level="DEBUG" />
   <logger name="com.zcode.springrestserver" level="ALL" />

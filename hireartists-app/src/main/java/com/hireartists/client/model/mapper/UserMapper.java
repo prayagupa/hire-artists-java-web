@@ -13,7 +13,7 @@ import com.hireartists.domain.User;
 public class UserMapper {
 	public static UserModel mapUser(User user) {
 		UserModel userModel = new UserModel();
-		userModel.setFullName(user.getFullName());
+		userModel.setFullName(user.getUserName());
 		return userModel;
 	}
 }

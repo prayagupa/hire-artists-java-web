@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.hireartists.web.service.IUserService;
+import com.hireartists.web.service.UserService;
 
 /**
  * @author prayag
@@ -23,14 +23,14 @@ import com.hireartists.web.service.IUserService;
 @Controller
 public class PersistenceController {
 	@Autowired
-	IUserService userService;
+	UserService userService;
 
 	@Autowired
 	UserRepository userRepository;
 
 	public PersistenceController(){}
 
-	public PersistenceController(IUserService userService, UserRepository userRepository) {
+	public PersistenceController(UserService userService, UserRepository userRepository) {
 		this.userService = userService;
 		this.userRepository = userRepository;
 	}
@@ -40,13 +40,13 @@ public class PersistenceController {
 	Map<String, Object> setup() {
 		User user = new User();
 		user.setAuthority("ROLE_ADMIN");
-		user.setFullName("Rod Johnson");
+		user.setUserName("RodJohnson");
 		user.setPassword("123456");
 		User addedUser = userRepository.save(user);
 
 		Map<String, Object> map = new HashedMap();
 		map.put("id", addedUser.getId());
-		map.put("fullName", addedUser.getFullName());
+		map.put("fullName", addedUser.getUserName());
 		return map;
 		// return addedUser;
 	}

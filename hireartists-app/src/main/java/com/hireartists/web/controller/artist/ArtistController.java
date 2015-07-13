@@ -3,18 +3,17 @@
  */
 package com.hireartists.web.controller.artist;
 
+import com.hireartists.client.model.ArtistModel;
 import com.hireartists.domain.Artist;
 import com.hireartists.web.service.ArtistService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.hireartists.client.model.UserModel;
-import com.hireartists.web.service.IUserService;
+import com.hireartists.web.service.UserService;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -28,13 +27,13 @@ public class ArtistController {
 	Logger logger = LoggerFactory.getLogger(ArtistController.class);
 
 	@Autowired
-	IUserService userService;
+	UserService userService;
 
 	@Autowired
 	ArtistService artistService;
 
 	public ArtistController(){}
-	public ArtistController(IUserService userService) {
+	public ArtistController(UserService userService) {
 		this.userService = userService;
 	}
 
@@ -49,16 +48,33 @@ public class ArtistController {
 	// return "home";
 	// }
 
-	@RequestMapping(value = "/artist/add", method = RequestMethod.GET, headers = "Accept=*/*")
-	public ModelAndView add(/*@RequestBody Artist artist*/){
+	@RequestMapping(value = "/artist/add", method = RequestMethod.POST, headers = "Accept=*/*")
+	public ModelAndView add(@ModelAttribute("artist") ArtistModel artistModel){
 
 		Artist artist = new Artist();
-		artist.setDisplayName("Pink Floyd");
+		artist.setDisplayName(artistModel.displayName);
 		artistService.save(artist);
 		ModelAndView modelAndView = new ModelAndView("artist/list");
 		modelAndView.addObject("artists", artist.getDisplayName());
 		return modelAndView;
 	}
+
+	@RequestMapping(value = "/artist/update", method = RequestMethod.POST, headers = "Accept=*/*")
+	public ModelAndView update(@ModelAttribute("artist") ArtistModel artistModel){
+
+		Artist artist = new Artist();
+		artist.setDisplayName(artistModel.displayName);
+		artistService.save(artist);
+		ModelAndView modelAndView = new ModelAndView("artist/list");
+		modelAndView.addObject("artists", artist.getDisplayName());
+		return modelAndView;
+	}
+
+//	@RequestMapping(value = "/artist/add/json", method = RequestMethod.GET, headers = {"Content-type=application/json"})
+//	public @ResponseBody addJson(@RequestBody Artist artist){
+//		artistService.save(artist);
+//		return JsonResponse("OK");
+//	}
 
 	@RequestMapping(value = "/artist/list", method = RequestMethod.GET, headers = "Accept=*/*")
 	public ModelAndView list(){
