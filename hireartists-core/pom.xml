@@ -1,0 +1,69 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>hireartists-core</groupId>
+  <artifactId>hireartists-core</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>hireartists-core</name>
+  <url>http://maven.apache.org</url>
+
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jetty.version>6.1.4</jetty.version>
+    <spring.version>4.1.7.RELEASE</spring.version>
+    <spring.data.version>4.1.7.RELEASE</spring.data.version>
+    <slf4j.version>1.6.1</slf4j.version>
+    <java.version>1.6</java.version>
+    <junit.version>4.8.2</junit.version>
+    <logback.version>0.9.26</logback.version>
+    <gwt.version>2.4.0</gwt.version>
+    <spring.security.version>3.1.0.RELEASE</spring.security.version>
+    <webappDirectory>src/main/webapp</webappDirectory>
+  </properties>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>4.0.0.GA</version>
+      <scope>compile</scope>
+    </dependency>
+    <!-- JPA Persistence Dependencies -->
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>3.6.6.Final</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate.javax.persistence</groupId>
+      <artifactId>hibernate-jpa-2.0-api</artifactId>
+      <version>1.0.0.Final</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+      <version>1.0.0.RELEASE</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+
+  </dependencies>
+</project>
