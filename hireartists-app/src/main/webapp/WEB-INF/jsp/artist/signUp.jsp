@@ -36,7 +36,7 @@
 <body>
 
 	<h1>hire-artists</h1>
-	<h3>Artist Sign Up Form:</h3>
+	<h3>Artist Sign Up:</h3>
 
 	<form id="signUp" name="signUp" action="/signUp" method="POST">
 
