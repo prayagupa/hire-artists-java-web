@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.hireartists.client.model.UserModel;
@@ -37,16 +38,23 @@ public class ArtistController {
 		this.userService = userService;
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET, headers = "Accept=*/*")
-	public @ResponseBody
-	UserModel login() {
-		return userService.login("Prayag", "123456");
+//	@RequestMapping(value = "/login", method = RequestMethod.GET, headers = "Accept=*/*")
+//	public @ResponseBody
+//	UserModel login() {
+//		return userService.login("Prayag", "123456");
+//	}
+
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Model m) {
+		return "artist/signIn";
 	}
 
-	// @RequestMapping(value = "/login", method = RequestMethod.GET)
-	// public String login_() {
-	// return "home";
-	// }
+	@RequestMapping(value = "/artist", method = RequestMethod.GET)
+	public String signUp(Model m) {
+		m.addAttribute("artist", new Artist());
+		return "artist/signUp";
+	}
 
 	@RequestMapping(value = "/artist/add", method = RequestMethod.POST, headers = "Accept=*/*")
 	public ModelAndView add(@ModelAttribute("artist") ArtistModel artistModel){
