@@ -24,7 +24,7 @@ public class EventOrganiser extends AbstractEntity<Long>{
 
     private String address;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
     @OneToMany(mappedBy = "eventOrganiser", fetch = FetchType.EAGER)
