@@ -1,13 +1,13 @@
 /**
  * 
  */
-package com.hireartists.web.service.impl;
+package com.hireartists.artist.service.impl;
 
 import com.hireartists.client.model.UserModel;
 import com.hireartists.client.model.mapper.UserMapper;
 import com.hireartists.domain.User;
-import com.hireartists.web.repository.UserRepository;
-import com.hireartists.web.service.UserService;
+import com.hireartists.artist.repository.UserRepository;
+import com.hireartists.artist.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

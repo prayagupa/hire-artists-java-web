@@ -10,8 +10,16 @@
                     dataType: "jsonp",
                     url : 'http://localhost:8080/hire-artists/main/events',
                     success : function(data) {
-                        console.log("data = > " + data.responseText)
-                        $('#result').html(data);
+                        var json = $.parseJSON(e.responseText)
+                        console.log(json)
+
+                        $.each(json, function(index,jsonObject){
+                            $.each(jsonObject, function(key,val){
+                                console.log("key : "+key+" ; value : "+val);
+                                if(key == "name")
+                                    $("#name").text(val)
+                            });
+                        });
                     },
                     error : function(e) {
                         var json = $.parseJSON(e.responseText)

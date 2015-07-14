@@ -4,7 +4,7 @@
 package com.hireartists.test;
 
 import com.hireartists.client.model.UserModel;
-import com.hireartists.web.repository.UserRepository;
+import com.hireartists.artist.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**

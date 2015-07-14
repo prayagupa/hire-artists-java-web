@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.hireartists.web.repository;
+package com.hireartists.artist.repository;
 
 import com.hireartists.domain.User;
 import org.springframework.data.jpa.repository.Query;

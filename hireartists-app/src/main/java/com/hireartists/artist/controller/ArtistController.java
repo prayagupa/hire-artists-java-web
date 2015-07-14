@@ -1,11 +1,13 @@
 /**
  * 
  */
-package com.hireartists.web.controller.artist;
+package com.hireartists.artist.controller;
 
 import com.hireartists.client.model.ArtistModel;
+import com.hireartists.client.model.SignupModel;
 import com.hireartists.domain.Artist;
-import com.hireartists.web.service.ArtistService;
+import com.hireartists.artist.service.ArtistService;
+import com.hireartists.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +15,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.hireartists.client.model.UserModel;
-import com.hireartists.web.service.UserService;
+import com.hireartists.artist.service.UserService;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author prayag
@@ -38,13 +42,6 @@ public class ArtistController {
 		this.userService = userService;
 	}
 
-//	@RequestMapping(value = "/login", method = RequestMethod.GET, headers = "Accept=*/*")
-//	public @ResponseBody
-//	UserModel login() {
-//		return userService.login("Prayag", "123456");
-//	}
-
-
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model m) {
 		return "artist/signIn";
@@ -56,26 +53,16 @@ public class ArtistController {
 		return "artist/signUp";
 	}
 
-	@RequestMapping(value = "/artist/add", method = RequestMethod.POST, headers = "Accept=*/*")
-	public ModelAndView add(@ModelAttribute("artist") ArtistModel artistModel){
-
-		Artist artist = new Artist();
-		artist.setDisplayName(artistModel.displayName);
-		artistService.save(artist);
-		ModelAndView modelAndView = new ModelAndView("artist/list");
-		modelAndView.addObject("artists", artist.getDisplayName());
-		return modelAndView;
+	@RequestMapping(value = "/signUp", method = RequestMethod.POST, headers = {"Content-type=application/json"}, produces = "application/json")
+	public @ResponseBody String signup_(@RequestBody List<Map<String, String>> signupModel){
+		logger.info("" + signupModel);
+//		artistService.save(signupModel);
+		return new String("OK");
 	}
 
 	@RequestMapping(value = "/artist/update", method = RequestMethod.POST, headers = "Accept=*/*")
 	public ModelAndView update(@ModelAttribute("artist") ArtistModel artistModel){
-
-		Artist artist = new Artist();
-		artist.setDisplayName(artistModel.displayName);
-		artistService.save(artist);
-		ModelAndView modelAndView = new ModelAndView("artist/list");
-		modelAndView.addObject("artists", artist.getDisplayName());
-		return modelAndView;
+		return null;
 	}
 
 //	@RequestMapping(value = "/artist/add/json", method = RequestMethod.GET, headers = {"Content-type=application/json"})

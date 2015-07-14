@@ -23,7 +23,7 @@
 	
 	<persistence-unit name="test">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>com.hireartists.web.domain.User</class>
+		<class>com.hireartists.artist.domain.User</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />

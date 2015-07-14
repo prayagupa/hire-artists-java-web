@@ -1,9 +1,8 @@
 /**
  * 
  */
-package com.hireartists.web.controller;
+package com.hireartists.artist.controller;
 
-import java.util.Date;
 import java.util.Map;
 
 import com.hireartists.domain.Artist;
@@ -12,8 +11,8 @@ import com.hireartists.domain.EventOrganiser;
 import com.hireartists.domain.User;
 import com.hireartists.eventOrganiser.repositories.EventOrganiserRepository;
 import com.hireartists.eventOrganiser.repositories.EventRepository;
-import com.hireartists.web.repository.ArtistRepository;
-import com.hireartists.web.repository.UserRepository;
+import com.hireartists.artist.repository.ArtistRepository;
+import com.hireartists.artist.repository.UserRepository;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.hireartists.web.service.UserService;
+import com.hireartists.artist.service.UserService;
 
 /**
  * @author prayag

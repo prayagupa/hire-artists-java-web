@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.hireartists.web.service;
+package com.hireartists.artist.service;
 
 import com.hireartists.client.model.UserModel;
 

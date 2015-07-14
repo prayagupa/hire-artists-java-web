@@ -1,4 +1,4 @@
-package com.hireartists.web.repository;
+package com.hireartists.artist.repository;
 
 import com.hireartists.domain.Artist;
 import org.springframework.data.jpa.repository.JpaRepository;
