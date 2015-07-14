@@ -8,14 +8,14 @@ package com.hireartists.client.model;
  * 
  */
 public class UserModel {
-	private String fullName;
+	private String username;
 
-	public String getFullName() {
-		return fullName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 }

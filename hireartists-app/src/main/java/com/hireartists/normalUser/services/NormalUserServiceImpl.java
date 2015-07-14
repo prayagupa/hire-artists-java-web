@@ -22,6 +22,6 @@ public class NormalUserServiceImpl implements NormalUserService {
 
     @Override
     public java.util.List<Event> events() {
-        return eventRepository.findAll();
+        return eventRepository.getEvents();
     }
 }

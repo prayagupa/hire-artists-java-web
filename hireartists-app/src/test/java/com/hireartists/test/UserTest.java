@@ -18,6 +18,6 @@ public class UserTest {
 
 	public void createUser() {
 		UserModel userModel = new UserModel();
-		userModel.setFullName("Prayag");
+		userModel.setUsername("Prayag");
 	}
 }

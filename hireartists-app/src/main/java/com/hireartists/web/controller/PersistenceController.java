@@ -6,6 +6,7 @@ package com.hireartists.web.controller;
 import java.util.Date;
 import java.util.Map;
 
+import com.hireartists.domain.Artist;
 import com.hireartists.domain.Event;
 import com.hireartists.domain.EventOrganiser;
 import com.hireartists.domain.User;
@@ -16,6 +17,7 @@ import com.hireartists.web.repository.UserRepository;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -46,6 +48,7 @@ public class PersistenceController {
 
 	public PersistenceController(){}
 
+	@Transactional
 	@RequestMapping(value = "/persistence", method = RequestMethod.GET, headers = "Accept=*/*")
 	public @ResponseBody
 	Map<String, Object> setupEvent() {
@@ -61,13 +64,23 @@ public class PersistenceController {
 		organiser.setUser(addedUser);
 		EventOrganiser e = eventOrganiserRepository.save(organiser);
 
+		Artist artist = new Artist();
+		artist.setDisplayName("Porcupine Tree");
+		Artist a = artistRepository.save(artist);
+
+		Artist riverside = new Artist();
+		artist.setDisplayName("Riverside");
+		Artist r = artistRepository.save(riverside);
+
 		Event event = new Event();
 		event.setEventOrganiser(e);
 		event.setName("California Festival");
 //		event.setFrom(new Date());
 //		event.setTo(new Date());
-		event.addArtist(artistRepository.findOne(1l));
-		eventRepository.save(event);
+		Event e_ = eventRepository.save(event);
+
+		a.addEvent(e_);
+		artistRepository.save(a);
 
 		Map<String, Object> map = new HashedMap();
 		map.put("id", addedUser.getId());
