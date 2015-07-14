@@ -1,5 +1,7 @@
 package com.hireartists.domain;
 
+import org.hibernate.annotations.IndexColumn;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class EventOrganiser extends AbstractEntity<Long>{
     @OneToOne
     private User user;
 
-    @OneToMany(mappedBy = "eventOrganiser", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "eventOrganiser", fetch = FetchType.EAGER)
     private List<Event> events;
 
     public String getName() {

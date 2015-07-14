@@ -69,4 +69,8 @@ public class Artist extends AbstractEntity<Long>{
     public void setArtistType(ArtistType artistType) {
         this.artistType = artistType;
     }
+
+    public void addEvent(Event e){
+        events.add(e);
+    }
 }

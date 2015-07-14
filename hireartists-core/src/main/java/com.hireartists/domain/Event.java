@@ -5,6 +5,8 @@ package com.hireartists.domain;
  * on 7/12/15.
  */
 
+import org.hibernate.annotations.IndexColumn;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
