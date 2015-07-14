@@ -31,9 +31,8 @@ public class UserServiceImpl implements UserService {
 	 * @return
 	 */
 	@Override
-	public UserModel login(String userName, String password) {
-		User user = new User();
-		user.setUserName("Prayag");
-		return UserMapper.mapUser(user);
+	public User login(String userName, String password) {
+		User user = userRepository.findByUserNameAndPassword(userName, password);
+		return user;
 	}
 }

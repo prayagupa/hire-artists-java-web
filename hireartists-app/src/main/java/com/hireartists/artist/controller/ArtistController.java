@@ -43,9 +43,27 @@ public class ArtistController {
 		this.userService = userService;
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Model m) {
+	@RequestMapping(value = "/loginView", method = RequestMethod.GET)
+	public String login() {
 		return "artist/signIn";
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST, headers = {"Content-type=application/json"}, produces = "application/json")
+	public @ResponseBody String login(@RequestBody List<Map<String, String>> keyValuePair) {
+		Map<String, String> map = getRequestParamaters(keyValuePair);
+		User user = userService.login(map.get("userName")+"", map.get("password"));
+		if (user == null)
+			return "KO";
+		return "OK";
+	}
+
+	private Map<String, String> getRequestParamaters(List<Map<String, String>> keyValuePair) {
+		Map<String, String> kv = new HashMap<String, String>();
+		for (Map<String, String> kvp : keyValuePair) {
+			logger.info("{}, {}", kvp.get("name"), kvp.get("value"));
+			kv.put(kvp.get("name"), kvp.get("value"));
+		}
+		return kv;
 	}
 
 	@RequestMapping(value = "/artist", method = RequestMethod.GET)
@@ -57,13 +75,12 @@ public class ArtistController {
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST, headers = {"Content-type=application/json"}, produces = "application/json")
 	public @ResponseBody String signup_(@RequestBody List<Map<String, String>> keyValuePair){
 
-		Map<String, String> kv = new HashMap<String, String>();
-		for (Map<String, String> kvp : keyValuePair) {
-				logger.info("{}, {}", kvp.get("name"), kvp.get("value"));
-				kv.put(kvp.get("name"), kvp.get("value"));
-		}
+		Map<String, String> kv = getRequestParamaters(keyValuePair);
+
 		final SignupModel signupModel = new SignupModel();
 		signupModel.setDisplayName(kv.get("displayName"));
+		signupModel.setEmail(kv.get("email"));
+
 		logger.info("{} : {}" , kv.size(), kv.get("displayName"));
 		artistService.save(signupModel);
 		return new String("OK");

@@ -51,7 +51,7 @@
 	<a href="artist">Sign Up as an Artist</a>
 
 	<br />
-	<a href="login">Login Here</a>
+	<a href="loginView">login</a>
 </div>
 
 <div id="result">
