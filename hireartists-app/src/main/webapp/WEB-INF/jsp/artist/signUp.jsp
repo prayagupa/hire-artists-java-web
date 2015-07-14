@@ -9,7 +9,7 @@
             function getEvents() {
 				 $('form').submit(function () {
 									$.ajax({
-										url: 'http://localhost:8080/hire-artists/signUp',
+										url: 'http://localhost:8080/hire-artists/signup',
 										type: 'POST',
 										data: JSON.stringify($(this).serializeArray()),
 										contentType: 'application/json',

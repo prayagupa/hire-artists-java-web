@@ -1,0 +1,9 @@
+com\hireartists\domain\EventOrganiser.class
+com\hireartists\App.class
+com\hireartists\domain\AbstractEntity.class
+com\hireartists\domain\ArtistType.class
+com\hireartists\domain\Event.class
+com\hireartists\domain\Member.class
+com\hireartists\domain\Artist.class
+com\hireartists\domain\User.class
+com\hireartists\domain\Discography.class

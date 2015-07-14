@@ -78,8 +78,8 @@ public class PersistenceController {
 //		event.setTo(new Date());
 		Event e_ = eventRepository.save(event);
 
-		a.addEvent(e_);
-		r.addEvent(e_);
+		//a.addEvent(e_);
+		//r.addEvent(e_);
 		artistRepository.save(a);
 		artistRepository.save(r);
 

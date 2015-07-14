@@ -12,7 +12,6 @@ import java.util.List;
  * on 7/13/15.r
  */
 
-@Repository
 public interface EventRepository extends JpaRepository<Event, Long>{
 
     @Query("select e from Event e JOIN FETCH e.artists a")
