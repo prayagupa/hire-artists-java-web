@@ -15,6 +15,7 @@ public class EventOrganiser extends AbstractEntity<Long>{
 
     private String name;
 
+    @Column(unique = true)
     private String email;
 
     private String contactNumber;

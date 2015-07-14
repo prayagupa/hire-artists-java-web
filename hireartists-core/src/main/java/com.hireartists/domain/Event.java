@@ -6,6 +6,7 @@ package com.hireartists.domain;
  */
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,14 +15,20 @@ import java.util.List;
 public class Event extends AbstractEntity<Long> {
 
     private String name;
-    private Date from;
-    private Date to;
+
+//    @Basic
+//    @Temporal(TemporalType.TIMESTAMP)
+//    private Date from;
+//
+//    @Basic
+//    @Temporal(TemporalType.TIMESTAMP)
+//    private Date to;
 
     @ManyToOne
     private EventOrganiser eventOrganiser;
 
     @ManyToMany(mappedBy = "events", fetch = FetchType.LAZY)
-    public List<Artist> artists;
+    public List<Artist> artists = new ArrayList<Artist>();
 
     public String getName() {
         return name;
@@ -31,21 +38,21 @@ public class Event extends AbstractEntity<Long> {
         this.name = name;
     }
 
-    public Date getFrom() {
-        return from;
-    }
-
-    public void setFrom(Date from) {
-        this.from = from;
-    }
-
-    public Date getTo() {
-        return to;
-    }
-
-    public void setTo(Date to) {
-        this.to = to;
-    }
+//    public Date getFrom() {
+//        return from;
+//    }
+//
+//    public void setFrom(Date from) {
+//        this.from = from;
+//    }
+//
+//    public Date getTo() {
+//        return to;
+//    }
+//
+//    public void setTo(Date to) {
+//        this.to = to;
+//    }
 
     public EventOrganiser getEventOrganiser() {
         return eventOrganiser;
@@ -61,5 +68,9 @@ public class Event extends AbstractEntity<Long> {
 
     public void setArtists(List<Artist> artists) {
         this.artists = artists;
+    }
+
+    public void addArtist(Artist artist) {
+        artists.add(artist);
     }
 }

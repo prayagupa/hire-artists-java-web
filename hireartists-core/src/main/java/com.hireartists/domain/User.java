@@ -3,6 +3,7 @@
  */
 package com.hireartists.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
@@ -12,6 +13,7 @@ import javax.persistence.Entity;
 @Entity
 public class User extends AbstractEntity<Long> {
 
+	@Column(unique = true)
 	private String userName;
 
 	private String password;
