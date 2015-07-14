@@ -27,11 +27,11 @@ public class ArtistServiceImpl implements ArtistService{
     @Override
     public Artist save(SignupModel signupModel) {
         Artist artist = new Artist();
-        artist.setDisplayName(signupModel.displayName);
+        artist.setDisplayName(signupModel.getDisplayName());
 
         User user = new User();
-        user.setUserName(signupModel.username);
-        user.setPassword(signupModel.password);
+        user.setUserName(signupModel.getUsername());
+        user.setPassword(signupModel.getPassword());
 
         return artistRepository.save(artist);
     }

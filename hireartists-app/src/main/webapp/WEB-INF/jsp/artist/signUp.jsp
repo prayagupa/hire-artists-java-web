@@ -7,23 +7,22 @@
 
     <script type="text/javascript">
             function getEvents() {
-				$("form[name=signUp]").submit(function(e){
-				    e.preventDefault();
-					$.ajax({
-						headers: {
-							'Accept': 'application/json',
-							'Content-Type': 'application/json'
-						},
-						'type': 'POST',
-						'url': 'http://localhost:8080/hire-artists/signUp',
-						'data': $('form#signUp').serialize(),
-						'dataType': 'json',
-						'contentType': "application/json",
-						'success': function(data) {
-										   console.log(data)
-								   }
-						});
-				});
+				 $('form').submit(function () {
+									$.ajax({
+										url: 'http://localhost:8080/hire-artists/signUp',
+										type: 'POST',
+										data: JSON.stringify($(this).serializeArray()),
+										contentType: 'application/json',
+										success: function (data) {
+											console.log(data)
+										},
+										error: function (jqXHR, textStatus, errorThrown) {
+											console.log(errorThrown)
+										}
+									})
+
+									return false
+				  });
             }
 
         $( document ).ready(function() {
@@ -40,9 +39,7 @@
 	<h3>Artist Sign Up Form:</h3>
 
 	<form id="signUp" name="signUp" action="/signUp" method="POST">
-		<label for="name">Artist Name: </label>
-		<input name="name" id="name" />
-		
+
 		<br />
 		<label for="email">Email: </label>
 		<input type="email" name="email" id="email" />

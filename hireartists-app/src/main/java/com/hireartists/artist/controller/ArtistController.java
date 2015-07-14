@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import com.hireartists.artist.service.UserService;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -54,9 +55,17 @@ public class ArtistController {
 	}
 
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST, headers = {"Content-type=application/json"}, produces = "application/json")
-	public @ResponseBody String signup_(@RequestBody List<Map<String, String>> signupModel){
-		logger.info("" + signupModel);
-//		artistService.save(signupModel);
+	public @ResponseBody String signup_(@RequestBody List<Map<String, String>> keyValuePair){
+
+		Map<String, String> kv = new HashMap<String, String>();
+		for (Map<String, String> kvp : keyValuePair) {
+				logger.info("{}, {}", kvp.get("name"), kvp.get("value"));
+				kv.put(kvp.get("name"), kvp.get("value"));
+		}
+		final SignupModel signupModel = new SignupModel();
+		signupModel.setDisplayName(kv.get("displayName"));
+		logger.info("{} : {}" , kv.size(), kv.get("displayName"));
+		artistService.save(signupModel);
 		return new String("OK");
 	}
 
