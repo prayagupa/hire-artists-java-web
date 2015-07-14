@@ -27,7 +27,7 @@ public class Artist extends AbstractEntity<Long>{
     @OneToMany(mappedBy = "artist")
     private List<Discography> discographies = new ArrayList<Discography>();
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
     public String getDisplayName() {

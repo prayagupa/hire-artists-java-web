@@ -32,6 +32,8 @@ public class ArtistServiceImpl implements ArtistService{
         User user = new User();
         user.setUserName(signupModel.getUsername());
         user.setPassword(signupModel.getPassword());
+        user.setAuthority("ROLE_ARTIST");
+        artist.setUser(user);
 
         return artistRepository.save(artist);
     }
