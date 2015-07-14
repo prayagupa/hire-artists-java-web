@@ -80,7 +80,9 @@ public class PersistenceController {
 		Event e_ = eventRepository.save(event);
 
 		a.addEvent(e_);
+		r.addEvent(e_);
 		artistRepository.save(a);
+		artistRepository.save(r);
 
 		Map<String, Object> map = new HashedMap();
 		map.put("id", addedUser.getId());

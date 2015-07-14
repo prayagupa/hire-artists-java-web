@@ -2,6 +2,7 @@ package com.hireartists.normalUser.controller;
 
 import com.hireartists.client.model.ArtistModel;
 import com.hireartists.client.model.EventModel;
+import com.hireartists.client.model.mapper.EventOrganiserMapper;
 import com.hireartists.domain.Artist;
 import com.hireartists.domain.Event;
 import com.hireartists.normalUser.services.NormalUserService;
@@ -36,25 +37,26 @@ public class NormalUserController {
 
     NormalUserController(){}
 
-    @RequestMapping(value = "/events", method = RequestMethod.GET)
+    @RequestMapping(value = "/main/events", method = RequestMethod.GET)
     @ResponseBody
     public List<EventModel> events() {
         List<Event> events = normalUserService.events();
         List<EventModel> eventJson = new ArrayList<EventModel>();
-        EventModel eventModel_ = new EventModel();
+        //EventModel eventModel_ = new EventModel();
         for (Event e : events) {
             EventModel eventModel = new EventModel();
             eventModel.id = e.getId();
             eventModel.name = e.getName();
             eventJson.add(eventModel);
 
+            eventModel.organiser = EventOrganiserMapper.map(e.getEventOrganiser());
             for (Artist a : e.getArtists()) {
                 ArtistModel aM = new ArtistModel();
                 aM.id = a.getId();
                 aM.displayName = a.getDisplayName();
                 eventModel.artists.add(aM);
             }
-            eventModel_ = eventModel;
+            //eventModel_ = eventModel;
         }
         try {
             String json = objectMapper.writeValueAsString(eventJson);

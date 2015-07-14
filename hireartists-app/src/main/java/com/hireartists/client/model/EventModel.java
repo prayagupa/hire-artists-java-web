@@ -10,6 +10,6 @@ import java.util.List;
 public class EventModel implements Serializable {
     public Long id;
     public String name;
-
+    public EventOrganiserModel organiser;
     public List<ArtistModel> artists = new ArrayList<ArtistModel>();
 }
