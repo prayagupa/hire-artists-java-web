@@ -112,13 +112,6 @@ public class ArtistController {
 		return null;
 	}
 
-	// @RequestMapping(value = "/artist/add/json", method = RequestMethod.GET,
-	// headers = {"Content-type=application/json"})
-	// public @ResponseBody addJson(@RequestBody Artist artist){
-	// artistService.save(artist);
-	// return JsonResponse("OK");
-	// }
-
 	@RequestMapping(value = "/artist/{userName}", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody Profile profile(@PathVariable(value = "userName") String userName) {
 		Artist a = artistService.getProfile(userName);
