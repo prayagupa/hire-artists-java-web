@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +24,7 @@ import com.hireartists.artist.service.ArtistService;
 import com.hireartists.artist.service.UserService;
 import com.hireartists.client.model.ArtistModel;
 import com.hireartists.client.model.Profile;
+import com.hireartists.client.model.Session;
 import com.hireartists.client.model.SignupModel;
 import com.hireartists.client.model.mapper.ProfileMapper;
 import com.hireartists.domain.Artist;
