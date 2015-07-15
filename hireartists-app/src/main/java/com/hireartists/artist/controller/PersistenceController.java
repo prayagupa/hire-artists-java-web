@@ -10,7 +10,7 @@ import com.hireartists.domain.Event;
 import com.hireartists.domain.EventOrganiser;
 import com.hireartists.domain.User;
 import com.hireartists.eventOrganiser.repositories.EventOrganiserRepository;
-import com.hireartists.eventOrganiser.repositories.EventRepository;
+import com.hireartists.event.repository.EventRepository;
 import com.hireartists.artist.repository.ArtistRepository;
 import com.hireartists.artist.repository.UserRepository;
 import org.apache.commons.collections.map.HashedMap;

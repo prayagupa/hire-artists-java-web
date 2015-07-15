@@ -5,8 +5,10 @@ import com.hireartists.domain.Artist;
 import com.hireartists.domain.Event;
 
 /**
- * Created by prayagupd on 7/14/15.
+ * Created by prayagupd
+ * on 7/14/15.
  */
+
 public class ProfileMapper {
     public static Profile mapToModel(Artist artist){
 
@@ -14,8 +16,11 @@ public class ProfileMapper {
         profile.id = artist.getId();
         profile.displayName = artist.getDisplayName();
 
+        Profile.EventModel eventModel = new Profile.EventModel();
         for ( Event e : artist.getEvents() ) {
-            System.out.println(e.getName());
+            eventModel.id = e.getId();
+            eventModel.name = e.getName();
+            profile.events.add(eventModel);
         }
         return profile;
     }
