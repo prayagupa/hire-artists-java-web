@@ -133,18 +133,26 @@ public class ArtistController {
 	// request return for viewing the list of artists page
 	@RequestMapping(value = "artist/viewEvents", method = RequestMethod.GET)
 	public String showEventList(Model m) {
-//		List<Event> eventList = eventService.findAll();
-//		m.addAttribute("artistList", artistList);
+		// List<Event> eventList = eventService.findAll();
+		// m.addAttribute("artistList", artistList);
 		return "artist/eventList";
 	}
-	
+
 	// request return for viewing the profile after viewing the list of events
-		@RequestMapping(value = "artist/backToProfile", method = RequestMethod.GET)
-		public String showProfile(Model m) {
-//			List<Event> eventList = eventService.findAll();
-//			m.addAttribute("artistList", artistList);
-			return "artist/profile";
-		}
+	@RequestMapping(value = "artist/backToProfile", method = RequestMethod.GET)
+	public String showProfile(Model m) {
+		// List<Event> eventList = eventService.findAll();
+		// m.addAttribute("artistList", artistList);
+		return "artist/profile";
+	}
+
+	// request return for viewing the profile after viewing the list of events
+	@RequestMapping(value = "/normalUser", method = RequestMethod.GET)
+	public String normalUserView(Model m) {
+		// List<Event> eventList = eventService.findAll();
+		// m.addAttribute("artistList", artistList);
+		return "artist/normalView";
+	}
 
 	@RequestMapping(value = "/artist/update", method = RequestMethod.POST, headers = "Accept=*/*")
 	public ModelAndView update(@ModelAttribute("artist") ArtistModel artistModel) {
