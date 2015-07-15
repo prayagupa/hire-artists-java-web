@@ -38,7 +38,9 @@ public class ArtistController {
 	@Autowired
 	ArtistService artistService;
 
-	public ArtistController(){}
+	public ArtistController() {
+	}
+
 	public ArtistController(UserService userService) {
 		this.userService = userService;
 	}
@@ -48,10 +50,11 @@ public class ArtistController {
 		return "artist/signIn";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST, headers = {"Content-type=application/json"}, produces = "application/json")
+	@RequestMapping(value = "/login", method = RequestMethod.POST, headers = {
+			"Content-type=application/json" }, produces = "application/json")
 	public @ResponseBody String login(@RequestBody List<Map<String, String>> keyValuePair) {
 		Map<String, String> map = getRequestParamaters(keyValuePair);
-		User user = userService.login(map.get("userName")+"", map.get("password"));
+		User user = userService.login(map.get("userName") + "", map.get("password"));
 		if (user == null)
 			return "KO";
 		return "OK";
@@ -72,8 +75,15 @@ public class ArtistController {
 		return "artist/signUp";
 	}
 
-	@RequestMapping(value = "/signUp", method = RequestMethod.POST, headers = {"Content-type=application/json"}, produces = "application/json")
-	public @ResponseBody String signup_(@RequestBody List<Map<String, String>> keyValuePair){
+	@RequestMapping(value = "/artistProfile", method = RequestMethod.GET)
+	public String artistProfile(Model m) {
+
+		return "artist/profile";
+	}
+
+	@RequestMapping(value = "/signUp", method = RequestMethod.POST, headers = {
+			"Content-type=application/json" }, produces = "application/json")
+	public @ResponseBody Map<String, String> signup_(@RequestBody List<Map<String, String>> keyValuePair) {
 
 		Map<String, String> kv = getRequestParamaters(keyValuePair);
 
@@ -81,31 +91,37 @@ public class ArtistController {
 		signupModel.setDisplayName(kv.get("displayName"));
 		signupModel.setEmail(kv.get("email"));
 
-		logger.info("{} : {}" , kv.size(), kv.get("displayName"));
+		logger.info("{} : {}", kv.size(), kv.get("displayName"));
+
 		artistService.save(signupModel);
-		return new String("OK");
+		Map<String, String> result = new HashMap<String, String>();
+		result.put("status", "success");
+		return result;
 	}
 
+	
+
 	@RequestMapping(value = "/artist/update", method = RequestMethod.POST, headers = "Accept=*/*")
-	public ModelAndView update(@ModelAttribute("artist") ArtistModel artistModel){
+	public ModelAndView update(@ModelAttribute("artist") ArtistModel artistModel) {
 		return null;
 	}
 
-//	@RequestMapping(value = "/artist/add/json", method = RequestMethod.GET, headers = {"Content-type=application/json"})
-//	public @ResponseBody addJson(@RequestBody Artist artist){
-//		artistService.save(artist);
-//		return JsonResponse("OK");
-//	}
+	// @RequestMapping(value = "/artist/add/json", method = RequestMethod.GET,
+	// headers = {"Content-type=application/json"})
+	// public @ResponseBody addJson(@RequestBody Artist artist){
+	// artistService.save(artist);
+	// return JsonResponse("OK");
+	// }
 
 	@RequestMapping(value = "/artist/list", method = RequestMethod.GET, headers = "Accept=*/*")
-	public ModelAndView list(){
+	public ModelAndView list() {
 		ModelAndView modelAndView = new ModelAndView("artist/list");
 		modelAndView.addObject("artists", "Porcupine Tree");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=*/*")
-	public ModelAndView index(){
+	public ModelAndView index() {
 		logger.info("index");
 		ModelAndView modelAndView = new ModelAndView("home");
 		modelAndView.addObject("artist", "Porcupine Tree");

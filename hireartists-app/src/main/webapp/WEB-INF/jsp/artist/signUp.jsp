@@ -9,12 +9,16 @@
             function getEvents() {
 				 $('form').submit(function () {
 									$.ajax({
-										url: 'http://localhost:8080/hire-artists/signUp',
+										url: 'http://localhost:8081/hire-artists/signUp',
 										type: 'POST',
 										data: JSON.stringify($(this).serializeArray()),
 										contentType: 'application/json',
 										success: function (data) {
 											console.log(data)
+											if ($.trim(data.status) == "success") {
+												alert("Account Created Successfully");
+												location.href="loginView";
+											}
 										},
 										error: function (jqXHR, textStatus, errorThrown) {
 											console.log(errorThrown)
@@ -42,23 +46,23 @@
 
 		<br />
 		<label for="email">Email: </label>
-		<input type="email" name="email" id="email" />
+		<input type="email" name="email" id="email" required />
 		
 		<br />
 		<label for="password">Password: </label>
-		<input type="password" name="password" id="password" />
+		<input type="password" name="password" id="password" required />
 		
 		<br />
 		<label for="rePassword">rePassword: </label>
-		<input type="password" name="rePassword" id="rePassword" />
+		<input type="password" name="rePassword" id="rePassword" required />
 		
 		<br />
 		<label for="address">Address: </label>
-		<input type="text" name="address" id="address"></input>
+		<input type="text" name="address" id="address" required/>
 		
 		<br />
 		<label for="displayName">Display Name: </label>
-		<input type="text" name="displayName" id="displayName"></input>
+		<input type="text" name="displayName" id="displayName" required />
 		
 		<br />
 		<input type="submit" value="Sign Up">

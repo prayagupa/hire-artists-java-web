@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 
-    <script type="text/javascript">
-            function getEvents() {
-				 $('form').submit(function () {
-									$.ajax({
-										url: 'http://localhost:8080/hire-artists/login',
-										type: 'POST',
-										data: JSON.stringify($(this).serializeArray()),
-										contentType: 'application/json',
-										success: function (data) {
-											console.log(data)
-											if(data == 'OK')
-											   window.location.href="http://localhost:8080/hire-artists/";
-										},
-										error: function (jqXHR, textStatus, errorThrown) {
-											console.log(errorThrown)
-										}
-									})
+<link rel="stylesheet" type="text/css"
+	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 
-									return false
-				  });
-            }
+<script type="text/javascript">
+	function getEvents() {
+		$('form').submit(function() {
+			$.ajax({
+				url : 'http://localhost:8080/hire-artists/login',
+				type : 'POST',
+				data : JSON.stringify($(this).serializeArray()),
+				contentType : 'application/json',
+				success : function(data) {
+					console.log(data)
+					if ($.trim(data.status) == "OK") {
+						alert("Successfully Logged In");
+						location.href = "artistProfile";
+					}
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					console.log(errorThrown)
+				}
+			})
 
-        $( document ).ready(function() {
-            console.log( "ready!" );
-            getEvents()
-            console.log( "end!" );
-        });
+			return false
+		});
+	}
 
-    </script>
+	$(document).ready(function() {
+		console.log("ready!");
+		getEvents()
+		console.log("end!");
+	});
+</script>
+
 </head>
 <body>
 
@@ -41,14 +47,12 @@
 	<h3>Sign In</h3>
 
 	<form action="/signIn" method="POST">
-		<label for="name">User Name: </label>
-		<input name="userName" id="userName" />
-
-		<br />
-		<label for="password"> Password: </label>
-		<input type="password" name="password" id="password" />
-		<input type="submit" value="Sign In">
+		<label for="name">User Name: </label> <input name="userName"
+			id="userName" /> <br /> <label for="password"> Password: </label> <input
+			type="password" name="password" id="password" /> <input
+			type="submit" value="Sign In">
 	</form>
+
 
 </body>
 </html>
