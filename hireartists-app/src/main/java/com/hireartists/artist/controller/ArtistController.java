@@ -5,7 +5,7 @@ package com.hireartists.artist.controller;
 
 import com.hireartists.client.model.ArtistModel;
 import com.hireartists.client.model.Profile;
-import com.hireartists.client.model.Session;
+//import com.hireartists.client.model.Session;
 import com.hireartists.client.model.SignupModel;
 import com.hireartists.client.model.mapper.ProfileMapper;
 import com.hireartists.domain.Artist;
@@ -61,8 +61,8 @@ public class ArtistController {
 		if (user == null) {
 			return "KO";
 		}
-		Session.id = user.getId();
-		Session.user = user;
+		//Session.id = user.getId();
+		//Session.user = user;
 		return "OK";
 	}
 
