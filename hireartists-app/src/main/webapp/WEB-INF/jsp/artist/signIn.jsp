@@ -13,15 +13,15 @@
 	function getEvents() {
 		$('form').submit(function() {
 			$.ajax({
-				url : 'http://localhost:8080/hire-artists/login',
+				url : 'http://localhost:8081/hire-artists/login',
 				type : 'POST',
 				data : JSON.stringify($(this).serializeArray()),
 				contentType : 'application/json',
 				success : function(data) {
 					console.log(data)
-					if ($.trim(data.status) == "OK") {
+					if ($.trim(data == "OK")) {
 						alert("Successfully Logged In");
-						location.href = "artistProfile";
+						location.href = "artist/profile";
 					}
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
@@ -46,11 +46,15 @@
 	<h1>hire-artists</h1>
 	<h3>Sign In</h3>
 
-	<form action="/signIn" method="POST">
-		<label for="name">User Name: </label> <input name="userName"
-			id="userName" /> <br /> <label for="password"> Password: </label> <input
-			type="password" name="password" id="password" /> <input
-			type="submit" value="Sign In">
+	<form>
+		<label for="name">User Name: </label> 
+		<input name="userName"id="userName" /> 
+		<br /> 
+		<label for="password"> Password: </label> 
+		<input type="password" name="password" id="password" /> 
+		
+		
+		<input type="submit" value="Sign In">
 	</form>
 
 

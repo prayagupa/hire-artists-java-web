@@ -48,10 +48,10 @@
 <h2>Hire Artists!</h2>
 
 <div>
-	<a href="artist">Sign Up as an Artist</a>
+	<a href="artist-sign-up">Sign Up as an Artist</a>
 
 	<br />
-	<a href="loginView">login</a>
+	<a href="loginView">Sign In here</a>
 </div>
 
 <div id="result">

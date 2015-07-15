@@ -17,7 +17,7 @@
 											console.log(data)
 											if ($.trim(data.status) == "success") {
 												alert("Account Created Successfully");
-												location.href="loginView";
+												location.href="artist/profile";
 											}
 										},
 										error: function (jqXHR, textStatus, errorThrown) {
@@ -45,8 +45,8 @@
 	<form id="signUp" name="signUp" action="/signUp" method="POST">
 
 		<br />
-		<label for="email">Email: </label>
-		<input type="email" name="email" id="email" required />
+		<label for="username">User Name: </label>
+		<input type="text" name="username" id="username" required />
 		
 		<br />
 		<label for="password">Password: </label>

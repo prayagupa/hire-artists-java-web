@@ -3,27 +3,32 @@
  */
 package com.hireartists.artist.controller;
 
-import com.hireartists.client.model.ArtistModel;
-import com.hireartists.client.model.Profile;
-import com.hireartists.client.model.Session;
-import com.hireartists.client.model.SignupModel;
-import com.hireartists.client.model.mapper.ProfileMapper;
-import com.hireartists.domain.Artist;
-import com.hireartists.artist.service.ArtistService;
-import com.hireartists.domain.User;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import com.hireartists.artist.service.UserService;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.hireartists.artist.service.ArtistService;
+import com.hireartists.artist.service.UserService;
+import com.hireartists.client.model.ArtistModel;
+import com.hireartists.client.model.Profile;
+import com.hireartists.client.model.SignupModel;
+import com.hireartists.client.model.mapper.ProfileMapper;
+import com.hireartists.domain.Artist;
+import com.hireartists.domain.User;
 
 /**
  * @author prayag
@@ -48,34 +53,25 @@ public class ArtistController {
 		this.userService = userService;
 	}
 
-	@RequestMapping(value = "/loginView", method = RequestMethod.GET)
-	public String login() {
-		return "artist/signIn";
-	}
-
 	@RequestMapping(value = "/login", method = RequestMethod.POST, headers = {
 			"Content-type=application/json" }, produces = "application/json")
-	public @ResponseBody String login(@RequestBody List<Map<String, String>> keyValuePair) {
+	public @ResponseBody String login_(@RequestBody List<Map<String, String>> keyValuePair) {
 		Map<String, String> map = getRequestParamaters(keyValuePair);
-		User user = userService.login(map.get("userName")+"", map.get("password"));
-		if (user == null) {
-			return "KO";
-		}
-		Session.id = user.getId();
-		Session.user = user;
-		return "OK";
+		User user = userService.login(map.get("userName") + "", map.get("password"));
+		 if (user == null) {
+		 return "KO";
+		 }
+		 Session.id = user.getId();
+		 Session.user = user;
+		 return "OK";
+		
 	}
 
-	@RequestMapping(value = "/artist", method = RequestMethod.GET)
+	// request return for sign up page
+	@RequestMapping(value = "/artist-sign-up", method = RequestMethod.GET)
 	public String signUp(Model m) {
 		m.addAttribute("artist", new Artist());
 		return "artist/signUp";
-	}
-
-	@RequestMapping(value = "/artistProfile", method = RequestMethod.GET)
-	public String artistProfile(Model m) {
-
-		return "artist/profile";
 	}
 
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST, headers = {
@@ -86,6 +82,9 @@ public class ArtistController {
 
 		final SignupModel signupModel = new SignupModel();
 		signupModel.setDisplayName(kv.get("displayName"));
+		signupModel.setAddress(kv.get("address"));
+		signupModel.setUsername(kv.get("username"));
+		signupModel.setPassword(kv.get("password"));
 		signupModel.setEmail(kv.get("email"));
 
 		logger.info("{} : {}", kv.size(), kv.get("displayName"));
@@ -96,7 +95,17 @@ public class ArtistController {
 		return result;
 	}
 
-	
+	// if request comes for LoginView, return the loginView page
+	@RequestMapping(value = "/loginView", method = RequestMethod.GET)
+	public String getLoginView(Model m) {
+		return "artist/signIn";
+	}
+
+	// if request comes for profileView, return the profileView jsp page
+	@RequestMapping(value = "/artist/profile", method = RequestMethod.GET)
+	public String artistProfile(Model m) {
+		return "artist/profile";
+	}
 
 	@RequestMapping(value = "/artist/update", method = RequestMethod.POST, headers = "Accept=*/*")
 	public ModelAndView update(@ModelAttribute("artist") ArtistModel artistModel) {
@@ -110,9 +119,8 @@ public class ArtistController {
 	// return JsonResponse("OK");
 	// }
 
-
 	@RequestMapping(value = "/artist/{userName}", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody Profile profile(@PathVariable(value="userName") String userName){
+	public @ResponseBody Profile profile(@PathVariable(value = "userName") String userName) {
 		Artist a = artistService.getProfile(userName);
 		logger.info("Artist {}", a.getDisplayName());
 		Profile p = ProfileMapper.mapToModel(a);
