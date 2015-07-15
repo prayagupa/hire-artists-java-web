@@ -13,9 +13,9 @@ public class Profile implements Serializable {
     public String displayName;
     public List<EventModel> events;
 
-    static class EventModel {
-        private Long id;
-        private String name;
+    public static class EventModel {
+        public Long id;
+        public String name;
     }
 
 }

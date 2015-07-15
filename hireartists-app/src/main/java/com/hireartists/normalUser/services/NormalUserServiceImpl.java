@@ -1,11 +1,9 @@
 package com.hireartists.normalUser.services;
 
 import com.hireartists.domain.*;
-import com.hireartists.eventOrganiser.repositories.EventRepository;
+import com.hireartists.event.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.*;
 
 /**
  * Created by prayagupd
