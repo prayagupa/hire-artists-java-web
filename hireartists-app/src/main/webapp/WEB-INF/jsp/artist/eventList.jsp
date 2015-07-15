@@ -18,7 +18,7 @@
 </head>
 
 <body>
-	<h1>List of Events</h1>
+	<!-- <h1>List of Events</h1>
 	
 	<h4>Convert In Farifield</h4>
 	<h4>Convert In Ottumwa</h4>
@@ -27,7 +27,40 @@
 	<h4>Convert In Iowa City</h4>
 	<div>
 		<a href="backToProfile">My Profile</a>
-	</div>
+	</div> -->
+	
+	<script type="text/javascript">
+            function getEvents() {
+				 $('form').submit(function () {
+									$.ajax({
+										url: 'http://localhost:8081/hire-artists/main/events',
+										type: 'POST',
+										data: JSON.stringify($(this).serializeArray()),
+										contentType: 'application/json',
+										success: function (data) {
+											console.log(data)
+											/* if ($.trim(data.status) == "success") {
+												alert("Account Created Successfully");
+												location.href="artist/profile";
+											} */
+										},
+										error: function (jqXHR, textStatus, errorThrown) {
+											console.log(errorThrown)
+										}
+									})
+
+									return false
+				  });
+            }
+
+        $( document ).ready(function() {
+            console.log( "ready!" );
+            getEvents()
+            console.log( "end!" );
+        });
+
+    </script>
+	
 	<br /><br /><br />
 	<%-- <c:forEach var="artist" items="${artistList}" begin="1" end="5"> --%>
 	   <div>

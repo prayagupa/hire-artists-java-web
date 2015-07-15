@@ -18,11 +18,12 @@
 				data : JSON.stringify($(this).serializeArray()),
 				contentType : 'application/json',
 				success : function(data) {
-					console.log(data)
-					if ($.trim(data == "OK")) {
-						alert("Successfully Logged In");
-						location.href = "artist/profile";
+
+					if (data != "OK") {
+						alert("Incorrect Login");
 					}
+					location.href = "artist/profile";
+
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
 					console.log(errorThrown)
@@ -47,14 +48,10 @@
 	<h3>Sign In</h3>
 
 	<form>
-		<label for="name">User Name: </label> 
-		<input name="userName"id="userName" /> 
-		<br /> 
-		<label for="password"> Password: </label> 
-		<input type="password" name="password" id="password" /> 
-		
-		
-		<input type="submit" value="Sign In">
+		<label for="name">User Name: </label> <input name="userName"
+			id="userName" /> <br /> <label for="password"> Password: </label> <input
+			type="password" name="password" id="password" /> <input
+			type="submit" value="Sign In">
 	</form>
 
 

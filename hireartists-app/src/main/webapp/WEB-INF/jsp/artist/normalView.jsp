@@ -54,7 +54,7 @@
 
 
 	<div>
-		<a href="backToProfile">My Profile</a>
+		<a href="revert">Back</a>
 	</div>
 	<br />
 	<br />

@@ -53,7 +53,7 @@
 		<a href="artist-sign-up">Sign Up as an Artist</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="loginView">Sign In here</a> <br /><br />
 		<a href="artistList">View Artists Here</a> &nbsp;&nbsp;&nbsp;
-		<a href="normalUser">Proceed As Normal User</a> 
+		<a href="main/events">Proceed As Normal User</a> 
 	</div>
 	<br />
 	<br />

@@ -20,7 +20,7 @@
 <body>
 	<h1>List of Artists</h1>
 	<div>
-		<a href="back">Home</a>
+		<a href="backHome">Home</a>
 	</div>
 	<br /><br /><br />
 	<c:forEach var="artist" items="${artistList}" begin="1" end="5">
