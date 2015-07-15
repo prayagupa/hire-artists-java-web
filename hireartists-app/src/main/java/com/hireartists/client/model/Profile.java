@@ -1,6 +1,7 @@
 package com.hireartists.client.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by prayagupd
@@ -10,7 +11,11 @@ import java.io.Serializable;
 public class Profile implements Serializable {
     public Long id;
     public String displayName;
+    public List<EventModel> events;
 
-
+    static class EventModel {
+        private Long id;
+        private String name;
+    }
 
 }

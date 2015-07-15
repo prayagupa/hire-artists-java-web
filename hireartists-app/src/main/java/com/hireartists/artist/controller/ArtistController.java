@@ -61,7 +61,7 @@ public class ArtistController {
 		 if (user == null) {
 		 return "KO";
 		 }
-		 Session.id = user.getId();
+		 Session.userName = user.getUserName();
 		 Session.user = user;
 		 return "OK";
 		
