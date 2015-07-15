@@ -6,6 +6,9 @@ import com.hireartists.client.model.SignupModel;
 import com.hireartists.domain.Artist;
 import com.hireartists.artist.service.ArtistService;
 import com.hireartists.domain.User;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,4 +45,10 @@ public class ArtistServiceImpl implements ArtistService{
     public Artist getProfile(String username) {
         return artistRepository.getProfile(username);
     }
+
+	@Override
+	public List<Artist> findAll() {
+		
+		return artistRepository.findAll();
+	}
 }

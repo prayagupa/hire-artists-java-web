@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Artist Profile</title>
+<title>List of Artists</title>
 
 <link rel="stylesheet" type="text/css"
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
@@ -18,32 +18,49 @@
 </head>
 
 <body>
-	<h1>
-		Welcome
-		<%=Session.userName%>
-		!!
-	</h1>
-	&nbsp; &nbsp;
-	<a href="signOut">Sign out</a>
+	<div>
+		<h1>List of Events and Organizers</h1>
+	</div>
+
+	<br />
+	<!-- Display the list of events with their organizers, artists and status -->
+
+
+	<div>
+		<table style="width: 100%">
+			<tr>
+				<td><strong>Events</strong></td>
+				<td><strong>Organizers</strong></td>
+				<td><strong>Artists</strong></td>
+				<td><strong>Status</strong></td>
+			</tr>
+
+		</table>
+	</div>
+
+	<div>
+		<h4>Convert In Farifield</h4>
+		&nbsp;&nbsp;
+		<h4>O'Reilly Org.</h4>
+		&nbsp;&nbsp;
+		<h4>Done</h4>
+		<h4>Convert In Ottumwa</h4>
+		&nbsp;&nbsp;
+		<h4>Arnold and Sons Org.</h4>
+		&nbsp;&nbsp;
+		<h4>Upcoming</h4>
+	</div>
+
+
+
+	<div>
+		<a href="revert">Back</a>
+	</div>
 	<br />
 	<br />
-	
-	<div id="main-event">
-		<%-- <img src="${pageContext.request.contextPath}/images/taylor.png" /> --%>
-		<p>Rihanna has finally released her highly anticipated music video
-			for "Bitch Better Have My Money"! Watch on VEVO, TIDAL and download
-			on iTunes and Google Play now.</p>
-	</div>
-	<aside id="sidebar">
-		<div>
-			<img alt="" src="">
-			<p></p>
-		</div>
-
-	</aside>
-	<div id="event-lists">
-		<a href="viewEvents">View All Events</a>
-
-	</div>
+	<br />
+	<%-- <c:forEach var="artist" items="${artistList}" begin="1" end="5"> --%>
+	<div></div>
+	<%-- </c:forEach> --%>
 </body>
 </html>

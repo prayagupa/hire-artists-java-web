@@ -28,6 +28,7 @@ import com.hireartists.client.model.Session;
 import com.hireartists.client.model.SignupModel;
 import com.hireartists.client.model.mapper.ProfileMapper;
 import com.hireartists.domain.Artist;
+import com.hireartists.domain.Event;
 import com.hireartists.domain.User;
 
 /**
@@ -58,13 +59,13 @@ public class ArtistController {
 	public @ResponseBody String login_(@RequestBody List<Map<String, String>> keyValuePair) {
 		Map<String, String> map = getRequestParamaters(keyValuePair);
 		User user = userService.login(map.get("userName") + "", map.get("password"));
-		 if (user == null) {
-		 return "KO";
-		 }
-		 Session.userName = user.getUserName();
-		 Session.user = user;
-		 return "OK";
-		
+		if (user == null) {
+			return "KO";
+		}
+		Session.userName = user.getUserName();
+		Session.user = user;
+		return "OK";
+
 	}
 
 	// request return for sign up page
@@ -72,6 +73,20 @@ public class ArtistController {
 	public String signUp(Model m) {
 		m.addAttribute("artist", new Artist());
 		return "artist/signUp";
+	}
+
+	// request for sign off return home page
+	@RequestMapping(value = "/artist/signOut", method = RequestMethod.GET)
+	public String signOff(Model m) {
+		Session.user = null;
+		Session.userName = "";
+		return "redirect:/";
+	}
+
+	// request for sign off return home page
+	@RequestMapping(value = "/back", method = RequestMethod.GET)
+	public String showHome(Model m) {
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST, headers = {
@@ -105,6 +120,38 @@ public class ArtistController {
 	@RequestMapping(value = "/artist/profile", method = RequestMethod.GET)
 	public String artistProfile(Model m) {
 		return "artist/profile";
+	}
+
+	// request return for viewing the list of artists page
+	@RequestMapping(value = "/artistList", method = RequestMethod.GET)
+	public String showArtistList(Model m) {
+		List<Artist> artistList = artistService.findAll();
+		m.addAttribute("artistList", artistList);
+		return "artist/list";
+	}
+
+	// request return for viewing the list of artists page
+	@RequestMapping(value = "artist/viewEvents", method = RequestMethod.GET)
+	public String showEventList(Model m) {
+		// List<Event> eventList = eventService.findAll();
+		// m.addAttribute("artistList", artistList);
+		return "artist/eventList";
+	}
+
+	// request return for viewing the profile after viewing the list of events
+	@RequestMapping(value = "artist/backToProfile", method = RequestMethod.GET)
+	public String showProfile(Model m) {
+		// List<Event> eventList = eventService.findAll();
+		// m.addAttribute("artistList", artistList);
+		return "artist/profile";
+	}
+
+	// request return for viewing the profile after viewing the list of events
+	@RequestMapping(value = "/normalUser", method = RequestMethod.GET)
+	public String normalUserView(Model m) {
+		// List<Event> eventList = eventService.findAll();
+		// m.addAttribute("artistList", artistList);
+		return "artist/normalView";
 	}
 
 	@RequestMapping(value = "/artist/update", method = RequestMethod.POST, headers = "Accept=*/*")
