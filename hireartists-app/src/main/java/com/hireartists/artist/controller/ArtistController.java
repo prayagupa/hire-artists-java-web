@@ -58,13 +58,13 @@ public class ArtistController {
 	public @ResponseBody String login_(@RequestBody List<Map<String, String>> keyValuePair) {
 		Map<String, String> map = getRequestParamaters(keyValuePair);
 		User user = userService.login(map.get("userName") + "", map.get("password"));
-		 if (user == null) {
-		 return "KO";
-		 }
-		 Session.userName = user.getUserName();
-		 Session.user = user;
-		 return "OK";
-		
+		if (user == null) {
+			return "KO";
+		}
+		Session.userName = user.getUserName();
+		Session.user = user;
+		return "OK";
+
 	}
 
 	// request return for sign up page
@@ -72,6 +72,15 @@ public class ArtistController {
 	public String signUp(Model m) {
 		m.addAttribute("artist", new Artist());
 		return "artist/signUp";
+	}
+
+	// request for sign off return home page
+	// request return for sign up page
+	@RequestMapping(value = "/artist/signOut", method = RequestMethod.GET)
+	public String signOff(Model m) {
+		Session.user = null;
+		Session.userName = "";
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST, headers = {

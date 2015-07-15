@@ -45,7 +45,7 @@
     </script>
 </head>
 <body>
-<h2>Hire Artists!</h2>
+<h1>Hire Artists!</h1>
 
 <div>
 	<a href="artist-sign-up">Sign Up as an Artist</a>

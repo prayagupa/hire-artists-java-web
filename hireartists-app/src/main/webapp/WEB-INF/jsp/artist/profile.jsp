@@ -10,15 +10,16 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+<%@ page import="com.hireartists.client.model.Session" %>
 </head>
 
 <body>
-	<h1>Your Profile</h1>
+	<h1><%= Session.userName %> Profile</h1>
 	<div>
-		<a href="/signOut">Sign out</a>
+		<a href="signOut">Sign out</a>
 	</div>
 	<div id = "main-event">
-		<!-- <img src="/resources/static/bigyan.jpg"> -->
+		<%--  <img src="<c:url value='/images/top.jpg'/>"/> --%>
 		<p>Rihanna has finally released her highly anticipated music video for "Bitch Better Have My Money"! Watch on VEVO, TIDAL and download on iTunes and Google Play now.</p>
 	</div>
 	<aside id="sidebar">
