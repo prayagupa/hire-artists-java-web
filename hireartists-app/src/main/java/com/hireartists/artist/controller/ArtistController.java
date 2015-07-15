@@ -102,14 +102,12 @@ public class ArtistController {
 	public ModelAndView update(@ModelAttribute("artist") ArtistModel artistModel) {
 		return null;
 	}
-
-	// @RequestMapping(value = "/artist/add/json", method = RequestMethod.GET,
-	// headers = {"Content-type=application/json"})
-	// public @ResponseBody addJson(@RequestBody Artist artist){
-	// artistService.save(artist);
-	// return JsonResponse("OK");
-	// }
-
+	
+//	@RequestMapping(value = "/artist/add/json", method = RequestMethod.GET, headers = {"Content-type=application/json"})
+//	public @ResponseBody addJson(@RequestBody Artist artist){
+//		artistService.save(artist);
+//		return JsonResponse("OK");
+//	}
 
 	@RequestMapping(value = "/artist/{userName}", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody Profile profile(@PathVariable(value="userName") String userName){
