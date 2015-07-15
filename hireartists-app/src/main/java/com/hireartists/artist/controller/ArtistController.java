@@ -28,6 +28,7 @@ import com.hireartists.client.model.Session;
 import com.hireartists.client.model.SignupModel;
 import com.hireartists.client.model.mapper.ProfileMapper;
 import com.hireartists.domain.Artist;
+import com.hireartists.domain.Event;
 import com.hireartists.domain.User;
 
 /**
@@ -75,11 +76,16 @@ public class ArtistController {
 	}
 
 	// request for sign off return home page
-	// request return for sign up page
 	@RequestMapping(value = "/artist/signOut", method = RequestMethod.GET)
 	public String signOff(Model m) {
 		Session.user = null;
 		Session.userName = "";
+		return "redirect:/";
+	}
+
+	// request for sign off return home page
+	@RequestMapping(value = "/back", method = RequestMethod.GET)
+	public String showHome(Model m) {
 		return "redirect:/";
 	}
 
@@ -115,6 +121,30 @@ public class ArtistController {
 	public String artistProfile(Model m) {
 		return "artist/profile";
 	}
+
+	// request return for viewing the list of artists page
+	@RequestMapping(value = "/artistList", method = RequestMethod.GET)
+	public String showArtistList(Model m) {
+		List<Artist> artistList = artistService.findAll();
+		m.addAttribute("artistList", artistList);
+		return "artist/list";
+	}
+
+	// request return for viewing the list of artists page
+	@RequestMapping(value = "artist/viewEvents", method = RequestMethod.GET)
+	public String showEventList(Model m) {
+//		List<Event> eventList = eventService.findAll();
+//		m.addAttribute("artistList", artistList);
+		return "artist/eventList";
+	}
+	
+	// request return for viewing the profile after viewing the list of events
+		@RequestMapping(value = "artist/backToProfile", method = RequestMethod.GET)
+		public String showProfile(Model m) {
+//			List<Event> eventList = eventService.findAll();
+//			m.addAttribute("artistList", artistList);
+			return "artist/profile";
+		}
 
 	@RequestMapping(value = "/artist/update", method = RequestMethod.POST, headers = "Accept=*/*")
 	public ModelAndView update(@ModelAttribute("artist") ArtistModel artistModel) {
