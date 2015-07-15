@@ -4,7 +4,10 @@
 package com.hireartists.artist.controller;
 
 import com.hireartists.client.model.ArtistModel;
+import com.hireartists.client.model.Profile;
+import com.hireartists.client.model.Session;
 import com.hireartists.client.model.SignupModel;
+import com.hireartists.client.model.mapper.ProfileMapper;
 import com.hireartists.domain.Artist;
 import com.hireartists.artist.service.ArtistService;
 import com.hireartists.domain.User;
@@ -54,19 +57,13 @@ public class ArtistController {
 			"Content-type=application/json" }, produces = "application/json")
 	public @ResponseBody String login(@RequestBody List<Map<String, String>> keyValuePair) {
 		Map<String, String> map = getRequestParamaters(keyValuePair);
-		User user = userService.login(map.get("userName") + "", map.get("password"));
-		if (user == null)
+		User user = userService.login(map.get("userName")+"", map.get("password"));
+		if (user == null) {
 			return "KO";
-		return "OK";
-	}
-
-	private Map<String, String> getRequestParamaters(List<Map<String, String>> keyValuePair) {
-		Map<String, String> kv = new HashMap<String, String>();
-		for (Map<String, String> kvp : keyValuePair) {
-			logger.info("{}, {}", kvp.get("name"), kvp.get("value"));
-			kv.put(kvp.get("name"), kvp.get("value"));
 		}
-		return kv;
+		Session.id = user.getId();
+		Session.user = user;
+		return "OK";
 	}
 
 	@RequestMapping(value = "/artist", method = RequestMethod.GET)
@@ -113,19 +110,22 @@ public class ArtistController {
 	// return JsonResponse("OK");
 	// }
 
-	@RequestMapping(value = "/artist/list", method = RequestMethod.GET, headers = "Accept=*/*")
-	public ModelAndView list() {
-		ModelAndView modelAndView = new ModelAndView("artist/list");
-		modelAndView.addObject("artists", "Porcupine Tree");
-		return modelAndView;
+
+	@RequestMapping(value = "/artist/{userName}", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody Profile profile(@PathVariable(value="userName") String userName){
+		Artist a = artistService.getProfile(userName);
+		logger.info("Artist {}", a.getDisplayName());
+		Profile p = ProfileMapper.mapToModel(a);
+		return p;
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=*/*")
-	public ModelAndView index() {
-		logger.info("index");
-		ModelAndView modelAndView = new ModelAndView("home");
-		modelAndView.addObject("artist", "Porcupine Tree");
-		return modelAndView;
+	private Map<String, String> getRequestParamaters(List<Map<String, String>> keyValuePair) {
+		Map<String, String> kv = new HashMap<String, String>();
+		for (Map<String, String> kvp : keyValuePair) {
+			logger.info("{}, {}", kvp.get("name"), kvp.get("value"));
+			kv.put(kvp.get("name"), kvp.get("value"));
+		}
+		return kv;
 	}
 
 }

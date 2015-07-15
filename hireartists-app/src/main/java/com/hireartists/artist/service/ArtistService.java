@@ -12,4 +12,6 @@ import com.hireartists.domain.Artist;
 
 public interface ArtistService {
     public Artist save(SignupModel artist);
+
+    Artist getProfile(String username);
 }

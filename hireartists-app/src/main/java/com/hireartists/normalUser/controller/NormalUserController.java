@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,6 +37,14 @@ public class NormalUserController {
     ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
 
     NormalUserController(){}
+
+    @RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=*/*")
+    public ModelAndView index(){
+        logger.info("index");
+        ModelAndView modelAndView = new ModelAndView("home");
+        modelAndView.addObject("artist", "Porcupine Tree");
+        return modelAndView;
+    }
 
     @RequestMapping(value = "/main/events", method = RequestMethod.GET)
     @ResponseBody
@@ -70,4 +79,12 @@ public class NormalUserController {
 
         return eventJson;
     }
+
+    @RequestMapping(value = "/artist/list", method = RequestMethod.GET, headers = "Accept=*/*")
+    public ModelAndView list(){
+        ModelAndView modelAndView = new ModelAndView("artist/list");
+        modelAndView.addObject("artists", "Porcupine Tree");
+        return modelAndView;
+    }
+
 }
