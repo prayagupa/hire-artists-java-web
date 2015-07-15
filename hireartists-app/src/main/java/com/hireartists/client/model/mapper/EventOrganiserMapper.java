@@ -9,8 +9,8 @@ import com.hireartists.domain.EventOrganiser;
 public class EventOrganiserMapper {
     public static EventOrganiserModel map(EventOrganiser eventOrganiser){
         EventOrganiserModel eventOrganiserModel = new EventOrganiserModel();
-        eventOrganiserModel.id = eventOrganiser.getId();
-        eventOrganiserModel.name = eventOrganiser.getName();
+        eventOrganiserModel.setId(eventOrganiser.getId());
+        eventOrganiserModel.setName(eventOrganiser.getName());
         return eventOrganiserModel;
     }
 }

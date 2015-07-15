@@ -1,6 +1,7 @@
 package com.hireartists.eventOrganiser.service.impl;
 
-import com.hireartists.client.model.SignupModel;
+import com.hireartists.client.model.EventOrganiserModel;
+import com.hireartists.client.model.Session;
 import com.hireartists.domain.EventOrganiser;
 import com.hireartists.domain.User;
 import com.hireartists.eventOrganiser.repositories.EventOrganiserRepository;
@@ -20,17 +21,30 @@ public class EventOrganiserServiceImpl implements EventOrganiserService {
     public void EventOrganiserServiceImpl () {}
 
     @Override
-    public EventOrganiser save(SignupModel signupModel) {
+    public EventOrganiser save(EventOrganiserModel eventOrganiserModel) {
         EventOrganiser eo = new EventOrganiser();
-        eo.setName(signupModel.getDisplayName());
+        eo.setName(eventOrganiserModel.getName());
+        eo.setEmail(eventOrganiserModel.getEmail());
+        eo.setAddress(eventOrganiserModel.getAddress());
+        eo.setContactNumber(eventOrganiserModel.getContactNumber());
 
         User user = new User();
-        user.setUserName(signupModel.getUsername());
-        user.setPassword(signupModel.getPassword());
+        user.setUserName(eventOrganiserModel.getUsername());
+        user.setPassword(eventOrganiserModel.getPassword());
         user.setAuthority("ROLE_EVENT_ORGANISER");
 
         eo.setUser(user);
+
+        Session.userName = user.getUserName();
+        Session.user = user;
+
         return eventOrganiserRepository.save(eo);
 
+    }
+
+    @Override
+    public EventOrganiser findByUsername(String username) {
+        EventOrganiser eventOrganiser = eventOrganiserRepository.findByUsername(username);
+        return eventOrganiser;
     }
 }

@@ -17,7 +17,7 @@
     function getEvents() {
       $('form').submit(function () {
         $.ajax({
-          url: 'http://localhost:8080/hire-artists/eventOrganiser/add',
+          url: 'http://localhost:8080/hire-artists/events/add',
           type: 'POST',
           data: JSON.stringify($(this).serializeArray()),
           contentType: 'application/json',
@@ -26,9 +26,9 @@
           },
           success: function (data) {
             if ($.trim(data.status) == "success") {
-              $("#response").text("You account is created successfully. Please wait, redirecting...");
+              $("#response").text("An event is created successfully. Please wait, redirecting...");
               setInterval(function () {
-                location.href = "profile";
+                location.href = "lists";
               },3000)
             }
           },

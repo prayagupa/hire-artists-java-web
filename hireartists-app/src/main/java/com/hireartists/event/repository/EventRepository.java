@@ -16,7 +16,7 @@ import java.util.List;
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
 
-    @Query("select e from Event e JOIN FETCH e.artists a")
+    @Query("select e from Event e LEFT JOIN FETCH e.artists a")
     public List<Event> getEvents();
 
     @Query("select e from Event e join fetch e.eventOrganiser eo where eo.user.userName = :username")

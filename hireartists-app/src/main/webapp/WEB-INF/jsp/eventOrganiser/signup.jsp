@@ -28,7 +28,7 @@
             if ($.trim(data.status) == "success") {
               $("#response").text("You account is created successfully. Please wait, redirecting...");
               setInterval(function () {
-                location.href = "profile";
+                location.href = "p";
               },3000)
             }
           },
@@ -66,6 +66,10 @@
   <input type="email" name="email" id="email" required />
 
   <br />
+  <label for="username">Username: </label>
+  <input type="text" name="username" id="username" required />
+
+  <br />
   <label for="password">Password: </label>
   <input type="password" name="password" id="password" required />
 
@@ -82,8 +86,8 @@
   <input type="text" name="address" id="address" required />
 
   <br />
-  <label for="displayName">Display Name: </label>
-  <input type="text" name="displayName" id="displayName" required />
+  <label for="name">Display Name: </label>
+  <input type="text" name="name" id="name" required />
 
   <br />
   <input type="submit" value="Sign Up">

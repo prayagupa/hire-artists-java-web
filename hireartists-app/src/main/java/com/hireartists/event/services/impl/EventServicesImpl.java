@@ -5,6 +5,7 @@ import com.hireartists.domain.Event;
 import com.hireartists.domain.EventOrganiser;
 import com.hireartists.event.repository.EventRepository;
 import com.hireartists.event.services.EventServices;
+import com.hireartists.eventOrganiser.service.EventOrganiserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +21,15 @@ public class EventServicesImpl implements EventServices{
     @Autowired
     EventRepository eventRepository;
 
+    @Autowired
+    EventOrganiserService eventOrganiserService;
+
     @Override
-    public Event save(EventModel eventModel, EventOrganiser eventOrganiser) {
+    public Event save(EventModel eventModel) {
         Event event = new Event();
         event.setName(eventModel.name);
+        long id = 29;
+        EventOrganiser eventOrganiser = eventOrganiserService.findByUsername("asdfsd");
         event.setEventOrganiser(eventOrganiser);
         return eventRepository.save(event);
     }
