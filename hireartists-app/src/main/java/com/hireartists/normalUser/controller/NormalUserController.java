@@ -2,6 +2,7 @@ package com.hireartists.normalUser.controller;
 
 import com.hireartists.client.model.ArtistModel;
 import com.hireartists.client.model.EventModel;
+import com.hireartists.client.model.Session;
 import com.hireartists.client.model.mapper.EventOrganiserMapper;
 import com.hireartists.domain.Artist;
 import com.hireartists.domain.Event;
@@ -41,9 +42,11 @@ public class NormalUserController {
     @RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=*/*")
     public ModelAndView index(){
         logger.info("index");
-        ModelAndView modelAndView = new ModelAndView("home");
-        modelAndView.addObject("artist", "Porcupine Tree");
-        return modelAndView;
+        if (Session.userName==null) {
+            return new ModelAndView("home");
+        } else {
+            return new ModelAndView("artist/profile");
+        }
     }
 
     @RequestMapping(value = "/main/events", method = RequestMethod.GET)
@@ -69,9 +72,9 @@ public class NormalUserController {
         }
         try {
             String json = objectMapper.writeValueAsString(eventJson);
-            logger.info("================= json ================");
-            logger.info("" + json);
-            logger.info("================= json ================");
+            //logger.info("================= json ================");
+            //logger.info("" + json);
+            //logger.info("================= json ================");
 
         } catch (IOException e) {
             e.printStackTrace();

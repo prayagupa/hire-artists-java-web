@@ -18,16 +18,17 @@
 </head>
 
 <body>
-	<h1>
-		Welcome
-		<%=Session.userName%>
-		!!
-	</h1>
-	&nbsp; &nbsp;
-	<a href="signOut">Sign out</a>
-	<br />
-	<br />
-	
+
+    <div>
+			<h1>
+				Welcome <%=Session.userName%> !!
+			</h1>
+			&nbsp; &nbsp;
+			<a href="signOut">Sign out</a>
+			<br />
+			<br />
+	</div>
+
 	<div id="main-event">
 		<%-- <img src="${pageContext.request.contextPath}/images/taylor.png" /> --%>
 		<p>Rihanna has finally released her highly anticipated music video

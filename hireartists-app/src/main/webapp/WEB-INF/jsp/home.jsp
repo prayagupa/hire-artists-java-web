@@ -51,6 +51,7 @@
 
 	<div>
 		<a href="artist-sign-up">Sign Up as an Artist</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="eventOrganiser/signup">Sign Up as an Event Organiser</a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="loginView">Sign In here</a> <br /><br />
 		<a href="artistList">View Artists Here</a> &nbsp;&nbsp;&nbsp;
 		<a href="main/events">Proceed As Normal User</a> 

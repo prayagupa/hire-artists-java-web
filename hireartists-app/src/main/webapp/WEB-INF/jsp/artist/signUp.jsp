@@ -10,7 +10,6 @@
 				 $('form').submit(function () {
 									$.ajax({
 										url: 'http://localhost:8080/hire-artists/signup',
-										url: 'http://localhost:8081/hire-artists/signUp',
 										type: 'POST',
 										data: JSON.stringify($(this).serializeArray()),
 										contentType: 'application/json',

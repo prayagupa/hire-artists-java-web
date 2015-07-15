@@ -8,8 +8,8 @@ import com.hireartists.domain.User;
  */
 
 public class Session {
-    public static String userName;
-    public static User user;
+    public static String userName = null;
+    public static User user = null;
 
     private Session(){
 

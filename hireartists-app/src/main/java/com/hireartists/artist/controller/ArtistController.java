@@ -54,33 +54,11 @@ public class ArtistController {
 		this.userService = userService;
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST, headers = {
-			"Content-type=application/json" }, produces = "application/json")
-	public @ResponseBody String login_(@RequestBody List<Map<String, String>> keyValuePair) {
-		Map<String, String> map = getRequestParamaters(keyValuePair);
-		User user = userService.login(map.get("userName") + "", map.get("password"));
-		if (user == null) {
-			return "KO";
-		}
-		Session.userName = user.getUserName();
-		Session.user = user;
-		return "OK";
-
-	}
-
 	// request return for sign up page
 	@RequestMapping(value = "/artist-sign-up", method = RequestMethod.GET)
 	public String signUp(Model m) {
 		m.addAttribute("artist", new Artist());
 		return "artist/signUp";
-	}
-
-	// request for sign off return home page
-	@RequestMapping(value = "/artist/signOut", method = RequestMethod.GET)
-	public String signOff(Model m) {
-		Session.user = null;
-		Session.userName = "";
-		return "redirect:/";
 	}
 
 	// request for sign off return home page
@@ -108,12 +86,6 @@ public class ArtistController {
 		Map<String, String> result = new HashMap<String, String>();
 		result.put("status", "success");
 		return result;
-	}
-
-	// if request comes for LoginView, return the loginView page
-	@RequestMapping(value = "/loginView", method = RequestMethod.GET)
-	public String getLoginView(Model m) {
-		return "artist/signIn";
 	}
 
 	// if request comes for profileView, return the profileView jsp page

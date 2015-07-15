@@ -13,16 +13,16 @@
 	function getEvents() {
 		$('form').submit(function() {
 			$.ajax({
-				url : 'http://localhost:8081/hire-artists/login',
+				url : 'http://localhost:8080/hire-artists/login',
 				type : 'POST',
 				data : JSON.stringify($(this).serializeArray()),
 				contentType : 'application/json',
 				success : function(data) {
 
-					if (data != "OK") {
+					if (data.status != "OK") {
 						alert("Incorrect Login");
 					}
-					location.href = "artist/profile";
+					location.href = data.url;
 
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
