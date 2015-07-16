@@ -1,6 +1,7 @@
 package com.hireartists.event.controller;
 
 import com.hireartists.client.model.EventModel;
+import com.hireartists.client.model.Session;
 import com.hireartists.domain.Event;
 import com.hireartists.event.services.EventServices;
 import org.slf4j.Logger;
@@ -49,7 +50,7 @@ public class EventController {
 
 
         logger.info("{} : {}", kv.size(), kv.get("name"));
-        eventServices.save(eventModel);
+        eventServices.save(eventModel, Session.userName);
         Map<String, String> response = new HashMap<String, String>();
 
         response.put("status", "success");

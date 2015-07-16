@@ -8,6 +8,7 @@ import com.hireartists.eventOrganiser.repositories.EventOrganiserRepository;
 import com.hireartists.eventOrganiser.service.EventOrganiserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Binod on 7/14/2015.
@@ -21,6 +22,7 @@ public class EventOrganiserServiceImpl implements EventOrganiserService {
     public void EventOrganiserServiceImpl () {}
 
     @Override
+    @Transactional
     public EventOrganiser save(EventOrganiserModel eventOrganiserModel) {
         EventOrganiser eo = new EventOrganiser();
         eo.setName(eventOrganiserModel.getName());

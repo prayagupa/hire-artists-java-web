@@ -52,7 +52,7 @@
 
 	<h3>Welcome <%= Session.userName %>!</h3>
 	<div>
-		<a href="/signOut">Sign out</a>
+		<a href="signOut">Sign out</a>
 	</div>
 	<div id = "main-event">
 		<!-- <img src="/resources/static/bigyan.jpg"> -->

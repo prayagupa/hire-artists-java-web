@@ -21,8 +21,9 @@
 
 					if (data.status != "OK") {
 						alert("Incorrect Login");
+					} else {
+						location.href = data.url;
 					}
-					location.href = data.url;
 
 				},
 				error : function(jqXHR, textStatus, errorThrown) {

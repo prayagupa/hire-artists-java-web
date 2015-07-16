@@ -16,8 +16,9 @@ import org.springframework.stereotype.Component;
 public class UserServiceAdvice {
     Logger logger = LoggerFactory.getLogger(UserServiceAdvice.class);
 
-    @Before("execution(public User com.hireartists.artist.service.impl.UserServiceImpl.login(..))")
+    @Before("execution(public * com.hireartists.artist.service.impl.UserServiceImpl.login(..))")
     public void logLogin(JoinPoint method){
+        System.out.println("================================================");
         logger.info("================================================");
         logger.info(method.getArgs()[0] + " is logging in.");
         logger.info("================================================");

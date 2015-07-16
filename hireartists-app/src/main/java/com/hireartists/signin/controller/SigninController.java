@@ -51,7 +51,7 @@ public class SigninController {
         Session.user = user;
 
         response.put("status", "OK");
-        if (user.getAuthority().equals("ROLE_EVENT_ORGANISATION")) {
+        if (user.getAuthority().equals("ROLE_EVENT_ORGANISER")) {
             response.put("url", "eventOrganiser/p");
         } else {
             response.put("url", "artist/profile");

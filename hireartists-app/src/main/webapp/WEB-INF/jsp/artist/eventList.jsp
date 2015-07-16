@@ -31,18 +31,14 @@
 	
 	<script type="text/javascript">
             function getEvents() {
-				 $('form').submit(function () {
 									$.ajax({
-										url: 'http://localhost:8081/hire-artists/main/events',
-										type: 'POST',
+										url: 'http://localhost:8080/hire-artists/main/events',
+										type: 'GET',
 										data: JSON.stringify($(this).serializeArray()),
 										contentType: 'application/json',
 										success: function (data) {
 											console.log(data)
-											/* if ($.trim(data.status) == "success") {
-												alert("Account Created Successfully");
-												location.href="artist/profile";
-											} */
+											toTable(data)
 										},
 										error: function (jqXHR, textStatus, errorThrown) {
 											console.log(errorThrown)
@@ -50,8 +46,21 @@
 									})
 
 									return false
-				  });
             }
+
+			function toTable(data){
+					var tbl_body = "";
+					var odd_even = false;
+					$.each(data, function() {
+						var tbl_row = "";
+						$.each(this, function(k , v) {
+							tbl_row += "<td>"+v+"</td>";
+						})
+						tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\">"+tbl_row+"</tr>";
+						odd_even = !odd_even;
+					})
+					$("#target_table_id tbody").html(tbl_body);
+			}
 
         $( document ).ready(function() {
             console.log( "ready!" );
@@ -62,11 +71,11 @@
     </script>
 	
 	<br /><br /><br />
-	<%-- <c:forEach var="artist" items="${artistList}" begin="1" end="5"> --%>
-	   <div>
+
+	   <table id="target_table_id">
 			
 			
-	   </div>
-	<%-- </c:forEach> --%>
+	   </table>
+
 </body>
 </html>

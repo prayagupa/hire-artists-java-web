@@ -5,9 +5,11 @@ import com.hireartists.domain.Event;
 import com.hireartists.domain.EventOrganiser;
 import com.hireartists.event.repository.EventRepository;
 import com.hireartists.event.services.EventServices;
+import com.hireartists.eventOrganiser.repositories.EventOrganiserRepository;
 import com.hireartists.eventOrganiser.service.EventOrganiserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,12 +26,12 @@ public class EventServicesImpl implements EventServices{
     @Autowired
     EventOrganiserService eventOrganiserService;
 
+    @Transactional
     @Override
-    public Event save(EventModel eventModel) {
+    public Event save(EventModel eventModel, String username) {
         Event event = new Event();
         event.setName(eventModel.name);
-        long id = 29;
-        EventOrganiser eventOrganiser = eventOrganiserService.findByUsername("asdfsd");
+        EventOrganiser eventOrganiser = eventOrganiserService.findByUsername(username);
         event.setEventOrganiser(eventOrganiser);
         return eventRepository.save(event);
     }

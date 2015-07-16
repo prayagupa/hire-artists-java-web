@@ -72,20 +72,27 @@ public class ArtistController {
 	public @ResponseBody Map<String, String> signup_(@RequestBody List<Map<String, String>> keyValuePair) {
 
 		Map<String, String> kv = getRequestParamaters(keyValuePair);
+		Map<String, String> response = new HashMap<String, String>();
 
 		final SignupModel signupModel = new SignupModel();
+		if(kv.get("displayName").equals("")){
+			response.put("status", "displayName can not be null.");;
+		}
 		signupModel.setDisplayName(kv.get("displayName"));
 		signupModel.setAddress(kv.get("address"));
+		if(kv.get("username").equals("")){
+			response.put("status", "username can not be null.");;
+		}
 		signupModel.setUsername(kv.get("username"));
+
 		signupModel.setPassword(kv.get("password"));
 		signupModel.setEmail(kv.get("email"));
 
 		logger.info("{} : {}", kv.size(), kv.get("displayName"));
 
 		artistService.save(signupModel);
-		Map<String, String> result = new HashMap<String, String>();
-		result.put("status", "success");
-		return result;
+		response.put("status", "success");
+		return response;
 	}
 
 	// if request comes for profileView, return the profileView jsp page

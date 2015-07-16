@@ -13,7 +13,7 @@
 			dataType : "jsonp",
 			url : 'http://localhost:8080/hire-artists/main/events',
 			success : function(data) {
-				var json = $.parseJSON(e.responseText)
+				var json = $.parseJSON(data.responseText)
 				console.log(json)
 
 				$.each(json, function(index, jsonObject) {
@@ -26,7 +26,7 @@
 			},
 			error : function(e) {
 				var json = $.parseJSON(e.responseText)
-				console.log(json)
+				console.log("e "+json)
 
 				$.each(json, function(index, jsonObject) {
 					$.each(jsonObject, function(key, val) {
