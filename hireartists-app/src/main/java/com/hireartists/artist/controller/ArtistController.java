@@ -54,19 +54,6 @@ public class ArtistController {
 		this.userService = userService;
 	}
 
-	// request return for sign up page
-	@RequestMapping(value = "/artist-sign-up", method = RequestMethod.GET)
-	public String signUp(Model m) {
-		m.addAttribute("artist", new Artist());
-		return "artist/signUp";
-	}
-
-	// request for sign off return home page
-	@RequestMapping(value = "/back", method = RequestMethod.GET)
-	public String showHome(Model m) {
-		return "redirect:/";
-	}
-
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST, headers = {
 			"Content-type=application/json" }, produces = "application/json")
 	public @ResponseBody Map<String, String> signup_(@RequestBody List<Map<String, String>> keyValuePair) {
@@ -95,11 +82,6 @@ public class ArtistController {
 		return response;
 	}
 
-	// if request comes for profileView, return the profileView jsp page
-	@RequestMapping(value = "/artist/profile", method = RequestMethod.GET)
-	public String artistProfile(Model m) {
-		return "artist/profile";
-	}
 
 	// request return for viewing the list of artists page
 	@RequestMapping(value = "/artistList", method = RequestMethod.GET)
@@ -109,28 +91,12 @@ public class ArtistController {
 		return "artist/list";
 	}
 
-	// request return for viewing the list of artists page
-	@RequestMapping(value = "artist/viewEvents", method = RequestMethod.GET)
-	public String showEventList(Model m) {
-		// List<Event> eventList = eventService.findAll();
-		// m.addAttribute("artistList", artistList);
-		return "artist/eventList";
-	}
-
 	// request return for viewing the profile after viewing the list of events
 	@RequestMapping(value = "artist/backToProfile", method = RequestMethod.GET)
 	public String showProfile(Model m) {
 		// List<Event> eventList = eventService.findAll();
 		// m.addAttribute("artistList", artistList);
 		return "artist/profile";
-	}
-
-	// request return for viewing the profile after viewing the list of events
-	@RequestMapping(value = "/normalUser", method = RequestMethod.GET)
-	public String normalUserView(Model m) {
-		// List<Event> eventList = eventService.findAll();
-		// m.addAttribute("artistList", artistList);
-		return "artist/normalView";
 	}
 
 	@RequestMapping(value = "/artist/update", method = RequestMethod.POST, headers = "Accept=*/*")

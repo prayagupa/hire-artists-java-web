@@ -1,4 +1,4 @@
-hire-artists-web
+hireartists-rest
 ==================
 
 Technologies 
@@ -8,16 +8,6 @@ maven, https://maven.apache.org/download.cgi
 
 The project is created using `maven-archetype-webapp`.
 
-```
-
-|                    |                   |                          |                              |
-|                    |                   |                          |      Domain/                 |
-|      view          |    controller     |      Service             |      Repository              |
-|                    |                   |                          |                              |
-|                    |                   |                          |                              |
-|                    |                   |                          |                              |
-
-```
 
 Dependency
 ----------
@@ -27,16 +17,16 @@ Dependency
     [...]
     <!-- jackson mapper -->
     <dependency>
-    <groupId>org.codehaus.jackson</groupId>
-    <artifactId>jackson-mapper-asl
-    </artifactId>
-    <version>1.9.0</version>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-mapper-asl
+        </artifactId>
+        <version>1.9.0</version>
     </dependency>
     
     <dependency>
-    <groupId>org.codehaus.jackson</groupId>
-    <artifactId>jackson-core-asl</artifactId>
-    <version>1.9.0</version>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-core-asl</artifactId>
+        <version>1.9.0</version>
     </dependency>
     <!-- jackson mapper -->
     [...]
@@ -56,29 +46,29 @@ xmlns:p="http://www.springframework.org/schema/p">
         <!-- Root Context: defines shared resources visible to all other web components -->
         <bean
         class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-        <property name="mediaTypes">
-        <map>
-        <entry key="html" value="text/html" />
-        <entry key="json" value="application/json" />
-        </map>
-        </property>
-        <property name="viewResolvers">
-        <list>
-        <bean id="viewResolver"
-        class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-        p:viewClass="org.springframework.web.servlet.view.JstlView"
-        p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
-        </list>
-        </property>
-        <property name="defaultViews">
-        <list>
-        <bean
-        class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
-        </list>
-        </property>
+                <property name="mediaTypes">
+                    <map>
+                    <entry key="html" value="text/html" />
+                    <entry key="json" value="application/json" />
+                    </map>
+                </property>
+                <property name="viewResolvers">
+                    <list>
+                    <bean id="viewResolver"
+                    class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+                    p:viewClass="org.springframework.web.servlet.view.JstlView"
+                    p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
+                    </list>
+                </property>
+                <property name="defaultViews">
+                    <list>
+                    <bean
+                    class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+                    </list>
+                </property>
         </bean>
         
-        <import resource="classpath:/WEB-INF/controllers.xml" />
+        <import resource="classpath:/WEB-INF/rest-layers.xml" />
 </beans>
 ```
 
