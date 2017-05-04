@@ -66,4 +66,20 @@
 
 
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>                                                                                                                                                                      <groupId>pl.project13.maven</groupId>                                                          
+        <artifactId>git-commit-id-plugin</artifactId>                                                  
+        <version>2.2.3</version>                                                                       
+        <configuration>                                                                                
+          <dotGitDirectory>${project.basedir}/../.git</dotGitDirectory>
+          <failOnNoGitDirectory>true</failOnNoGitDirectory>                                            
+          <verbose>true</verbose>                                                                      
+          <generateGitPropertiesFile>true</generateGitPropertiesFile>                                  
+          <generateGitPropertiesFilename>${project.build.outputDirectory}/build.properties</generateGitPropertiesFilename>
+        </configuration>                                                                               
+      </plugin> 
+     </plugins>
+  </build>
 </project>
