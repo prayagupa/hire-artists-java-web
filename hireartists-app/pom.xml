@@ -47,87 +47,93 @@
 
         </dependency>
 
+        <!--        <dependency>-->
+        <!--            <groupId>javax.validation</groupId>-->
+        <!--            <artifactId>validation-api</artifactId>-->
+        <!--            <version>1.0.0.GA</version>-->
+        <!--            <scope>compile</scope>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.hibernate</groupId>-->
+        <!--            <artifactId>hibernate-validator</artifactId>-->
+        <!--            <version>4.0.0.GA</version>-->
+        <!--            <scope>compile</scope>-->
+        <!--        </dependency>-->
+        <!--        &lt;!&ndash; JPA Persistence Dependencies &ndash;&gt;-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.hibernate</groupId>-->
+        <!--            <artifactId>hibernate-entitymanager</artifactId>-->
+        <!--            <version>3.6.6.Final</version>-->
+        <!--            <scope>compile</scope>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.javassist</groupId>-->
+        <!--            <artifactId>javassist</artifactId>-->
+        <!--            <version>3.27.0-GA</version> &lt;!&ndash; or the latest version &ndash;&gt;-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>hsqldb</groupId>-->
+        <!--            <artifactId>hsqldb</artifactId>-->
+        <!--            <version>1.8.0.10</version>-->
+        <!--        </dependency>-->
+        <!--        -->
+        <!--        <dependency>-->
+        <!--            <groupId>org.hibernate.javax.persistence</groupId>-->
+        <!--            <artifactId>hibernate-jpa-2.0-api</artifactId>-->
+        <!--            <version>1.0.0.Final</version>-->
+        <!--            <scope>compile</scope>-->
+        <!--        </dependency>        -->
+
+        <!-- hibernate dependencies -->
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>1.0.0.GA</version>
-            <scope>compile</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>2.5.12</version>
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>4.0.0.GA</version>
-            <scope>compile</scope>
-        </dependency>
-        <!-- JPA Persistence Dependencies -->
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>3.6.6.Final</version>
-            <scope>compile</scope>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+            <version>2.3.232</version>
         </dependency>
 
         <dependency>
-            <groupId>org.javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>3.27.0-GA</version> <!-- or the latest version -->
-        </dependency>
-
-        <dependency>
-            <groupId>hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>1.8.0.10</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <version>1.0.0.Final</version>
-            <scope>compile</scope>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Spring Dependencies -->
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-            <exclusions>
-                <!-- Exclude Commons Logging in favor of SLF4j -->
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.5.12</version>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
-            <scope>compile</scope>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.13.4.2</version>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.11.4</version>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>4.1.7.RELEASE</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.11.4</version>
         </dependency>
-
 
         <!-- DB Dependencies -->
 
@@ -242,7 +248,6 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>1.0.0.RELEASE</version>
-            <type>jar</type>
             <scope>compile</scope>
         </dependency>
 
@@ -257,7 +262,6 @@
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity</artifactId>
             <version>1.7</version>
-            <type>jar</type>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -272,7 +276,6 @@
             <groupId>com.octo.captcha</groupId>
             <artifactId>jcaptcha</artifactId>
             <version>2.0-alpha-1</version>
-            <type>jar</type>
             <scope>compile</scope>
         </dependency>
 
