@@ -1,4 +1,4 @@
-hireartists-rest
+hire-artists service
 ==================
 
 Technologies 
@@ -78,9 +78,30 @@ run-app
 
 change `db.properties`
 
-```
+```bash
 $ mvn jetty:run
 
-http://localhost:8080/hire-artists/artist/list
+## check url
+## http://localhost:8080/hire-artists/artist/list
+```
 
+FIXME
+----
+
+```bash
+11:48:23.150 [main] ERROR o.h.proxy.pojo.BasicLazyInitializer - Javassist Enhancement failed: com.hireartists.domain.Artist
+java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @741741d0
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:388) ~[na:na]
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:364) ~[na:na]
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:312) ~[na:na]
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:203) ~[na:na]
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:197) ~[na:na]
+	at javassist.util.proxy.SecurityActions.setAccessible(SecurityActions.java:102) ~[javassist-3.12.0.GA.jar:na]
+	at javassist.util.proxy.FactoryHelper.toClass2(FactoryHelper.java:180) ~[javassist-3.12.0.GA.jar:na]
+	at javassist.util.proxy.FactoryHelper.toClass(FactoryHelper.java:163) ~[javassist-3.12.0.GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass3(ProxyFactory.java:501) ~[javassist-3.12.0.GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass2(ProxyFactory.java:486) ~[javassist-3.12.0.GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass1(ProxyFactory.java:422) ~[javassist-3.12.0.GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass(ProxyFactory.java:394) ~[javassist-3.12.0.GA.jar:na]
+	at org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer.getProxyFactory(JavassistLazyInitializer.java:162) ~[hibernate-core-3.6.6.Final.jar:3.6.6.Final]
 ```

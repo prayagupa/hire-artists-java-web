@@ -6,5 +6,6 @@ package com.hireartists.domain;
  */
 
 public enum  ArtistType {
-    SOLO, BAND
+    SOLO,
+    GROUP
 }

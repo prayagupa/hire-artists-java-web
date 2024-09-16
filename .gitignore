@@ -1,0 +1,5 @@
+.idea/
+*/.idea/
+*log.file_IS_UNDEFINED
+*/target/
+target/
